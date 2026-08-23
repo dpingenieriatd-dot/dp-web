@@ -4,18 +4,18 @@ import { appInternaHref, contacto } from "@/lib/site-config";
 import { SocialIcon, type SocialPlatform } from "@/components/shared/SocialIcon";
 
 const NAV_LINKS = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#nosotros", label: "Nosotros" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#actualidad", label: "Actualidad" },
-  { href: "#contactenos", label: "Contáctenos" },
+  { href: "/#inicio", label: "Inicio" },
+  { href: "/#nosotros", label: "Nosotros" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#actualidad", label: "Actualidad" },
+  { href: "/#contactenos", label: "Contáctenos" },
 ];
 
 const SERVICIOS_LINKS = [
-  { href: "#ingenieria", label: "Ingeniería y Geotecnia" },
-  { href: "#gestion", label: "Sistemas de gestión" },
-  { href: "#suministros", label: "Suministros y dotación EPP" },
-  { href: "#contactenos", label: "Capacitaciones" },
+  { href: "/#ingenieria", label: "Ingeniería y Geotecnia" },
+  { href: "/#gestion", label: "Sistemas de gestión" },
+  { href: "/#suministros", label: "Suministros y dotación EPP" },
+  { href: "/#contactenos", label: "Capacitaciones" },
 ];
 
 const SOCIALES: { platform: SocialPlatform; title: string; href: string; active: boolean }[] = [
@@ -68,9 +68,9 @@ export function Footer() {
             <FooterColumnTitle>Navegación</FooterColumnTitle>
             <div className="grid gap-[11px] text-[14.5px]">
               {NAV_LINKS.map((l) => (
-                <a key={l.href} href={l.href} className="text-fondo/72 hover:text-verde-suave">
+                <Link key={l.href} href={l.href} className="text-fondo/72 hover:text-verde-suave">
                   {l.label}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -79,9 +79,9 @@ export function Footer() {
             <FooterColumnTitle>Servicios</FooterColumnTitle>
             <div className="grid gap-[11px] text-[14.5px]">
               {SERVICIOS_LINKS.map((l) => (
-                <a key={l.label} href={l.href} className="text-fondo/72 hover:text-verde-suave">
+                <Link key={l.label} href={l.href} className="text-fondo/72 hover:text-verde-suave">
                   {l.label}
-                </a>
+                </Link>
               ))}
             </div>
             <div className="mt-7 mb-4 font-mono text-[11px] tracking-[.12em] text-verde-suave uppercase">
@@ -115,24 +115,24 @@ export function Footer() {
               <span>{contacto.ciudad}</span>
               <span>{contacto.horarios.corto}</span>
             </div>
-            <a
-              href="#contactenos"
+            <Link
+              href="/#contactenos"
               className="mt-5 inline-block rounded-[2px] bg-verde-marca px-[18px] py-[13px] font-mono text-[12px] tracking-[.08em] text-white uppercase transition-colors hover:bg-verde-claro hover:text-verde-footer"
             >
               Escribir por WhatsApp
-            </a>
+            </Link>
           </div>
         </div>
 
         <div className="mt-[52px] flex flex-wrap justify-between gap-6 border-t border-fondo/14 pt-[22px] text-[13px] text-fondo/50">
           <span>D&amp;P Ingeniería Integral © 2026. Todos los derechos reservados.</span>
           <span className="flex gap-[22px]">
-            <a href="#" className="text-fondo/50 hover:text-verde-suave">
+            <Link href="/politica-de-privacidad" className="text-fondo/50 hover:text-verde-suave">
               Política de privacidad
-            </a>
-            <a href="#" className="text-fondo/50 hover:text-verde-suave">
+            </Link>
+            <Link href="/tratamiento-de-datos" className="text-fondo/50 hover:text-verde-suave">
               Tratamiento de datos
-            </a>
+            </Link>
           </span>
         </div>
       </div>

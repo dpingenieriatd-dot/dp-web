@@ -22,6 +22,7 @@ export function ServicioIngenieria() {
       titulo="Ingeniería y Geotecnia"
       subtitulo="Diseños y proyectos"
       placeholderLabel="perforación / talud"
+      placeholderSrc="/fotos-sitio-actual/perforacion_talud.jpg"
       linkHref="#contactenos"
       linkLabel="Solicitar este servicio →"
     >

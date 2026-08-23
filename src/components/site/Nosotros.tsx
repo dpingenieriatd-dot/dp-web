@@ -48,7 +48,11 @@ export function Nosotros() {
         </div>
 
         <div className="grid h-[560px] grid-rows-[1.3fr_1fr] gap-4">
-          <ImagePlaceholder label="imagen «nosotros» — equipo D&P" />
+          <ImagePlaceholder
+            label="imagen «nosotros» — equipo D&P"
+            src="/fotos-sitio-actual/foto-equipo-nosotros.png"
+            alt="Equipo de D&P Ingeniería Integral"
+          />
           <div className="grid grid-cols-2 gap-4">
             <ImagePlaceholder label="ensayo de laboratorio" />
             <ImagePlaceholder label="capacitación SG-SST" />

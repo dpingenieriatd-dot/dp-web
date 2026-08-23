@@ -1,8 +1,12 @@
+import Image from "next/image";
+
 type ImagePlaceholderProps = {
   label: string;
   variant?: "light" | "dark";
   height?: number | string;
   className?: string;
+  src?: string;
+  alt?: string;
 };
 
 export function ImagePlaceholder({
@@ -10,8 +14,24 @@ export function ImagePlaceholder({
   variant = "light",
   height,
   className = "",
+  src,
+  alt,
 }: ImagePlaceholderProps) {
   const isDark = variant === "dark";
+
+  if (src) {
+    return (
+      <div
+        className={`relative overflow-hidden border ${
+          isDark ? "border-white/18" : "border-borde"
+        } ${className}`}
+        style={{ height }}
+      >
+        <Image src={src} alt={alt ?? label} fill sizes="(min-width: 900px) 50vw, 100vw" className="object-cover" />
+      </div>
+    );
+  }
+
   return (
     <div
       className={`flex items-end border p-4 ${

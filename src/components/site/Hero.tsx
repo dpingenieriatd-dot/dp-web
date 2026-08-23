@@ -73,6 +73,8 @@ export function Hero() {
           variant="dark"
           height={340}
           label="foto de obra / equipo en campo — 1200×900"
+          src="/fotos-sitio-actual/foto-geotecnia-obra.jpg"
+          alt="Equipo de ingenieros en campo durante una exploración geotécnica"
         />
       </div>
 

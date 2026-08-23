@@ -20,6 +20,7 @@ export function ServicioSuministros() {
       titulo="Suministros y dotación EPP"
       subtitulo="Souvenirs – Dotación EPP"
       placeholderLabel="dotación industrial"
+      placeholderSrc="/fotos-sitio-actual/foto-dotacion-epp.jpg"
       linkHref="#contactenos"
       linkLabel="Pedir catálogo →"
     >

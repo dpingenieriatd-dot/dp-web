@@ -117,7 +117,15 @@ export function Contactenos() {
             {sent ? "Mensaje enviado ✓" : "Enviar"}
           </button>
           <p className="m-0 text-[12.5px] leading-[1.5] text-texto-tenue">
-            Al enviar acepta el tratamiento de sus datos conforme a la política de privacidad.
+            Al enviar acepta el tratamiento de sus datos conforme a nuestra{" "}
+            <a href="/politica-de-privacidad" className="underline underline-offset-2">
+              política de privacidad
+            </a>{" "}
+            y{" "}
+            <a href="/tratamiento-de-datos" className="underline underline-offset-2">
+              política de tratamiento de datos
+            </a>
+            .
           </p>
         </form>
       </div>

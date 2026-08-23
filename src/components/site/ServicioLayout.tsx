@@ -7,6 +7,7 @@ type ServicioLayoutProps = {
   titulo: string;
   subtitulo: string;
   placeholderLabel: string;
+  placeholderSrc?: string;
   linkHref: string;
   linkLabel: string;
   children: React.ReactNode;
@@ -19,6 +20,7 @@ export function ServicioLayout({
   titulo,
   subtitulo,
   placeholderLabel,
+  placeholderSrc,
   linkHref,
   linkLabel,
   children,
@@ -34,7 +36,12 @@ export function ServicioLayout({
             {titulo}
           </h3>
           <p className="mb-6 text-[16px] text-texto-suave">{subtitulo}</p>
-          <ImagePlaceholder label={placeholderLabel} height={200} />
+          <ImagePlaceholder
+            label={placeholderLabel}
+            src={placeholderSrc}
+            alt={titulo}
+            height={200}
+          />
           <a
             href={linkHref}
             className="mt-6 inline-block border-b border-verde-claro pb-1 font-mono text-[12.5px] tracking-[.08em] text-verde-marca uppercase transition-colors hover:text-verde-claro"

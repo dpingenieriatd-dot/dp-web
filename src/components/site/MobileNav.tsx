@@ -4,11 +4,11 @@ import Link from "next/link";
 import { useState } from "react";
 
 const NAV_LINKS = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#nosotros", label: "Nosotros" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#actualidad", label: "Actualidad" },
-  { href: "#contactenos", label: "Contáctenos" },
+  { href: "/#inicio", label: "Inicio" },
+  { href: "/#nosotros", label: "Nosotros" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#actualidad", label: "Actualidad" },
+  { href: "/#contactenos", label: "Contáctenos" },
 ];
 
 export function MobileNav() {
@@ -32,9 +32,9 @@ export function MobileNav() {
         <div className="absolute inset-x-0 top-full border-b border-borde bg-fondo px-[28px] py-5 shadow-lg">
           <nav className="flex flex-col gap-4 font-mono text-[13px] tracking-[.09em] text-tinta uppercase">
             {NAV_LINKS.map((link) => (
-              <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
+              <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
           <div className="mt-5 flex flex-col gap-3">
@@ -45,13 +45,13 @@ export function MobileNav() {
             >
               Portal clientes
             </Link>
-            <a
-              href="#contactenos"
+            <Link
+              href="/#contactenos"
               onClick={() => setOpen(false)}
               className="rounded-[2px] bg-verde-marca px-5 py-3 text-center font-mono text-[12.5px] tracking-[.08em] text-white uppercase"
             >
               Cotizar
-            </a>
+            </Link>
           </div>
         </div>
       )}
