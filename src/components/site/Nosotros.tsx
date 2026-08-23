@@ -54,8 +54,16 @@ export function Nosotros() {
             alt="Equipo de D&P Ingeniería Integral"
           />
           <div className="grid grid-cols-2 gap-4">
-            <ImagePlaceholder label="ensayo de laboratorio" />
-            <ImagePlaceholder label="capacitación SG-SST" />
+            <ImagePlaceholder
+              label="ensayo de laboratorio"
+              src="/fotos-sitio-actual/ensayo_laboratorio.jpg"
+              alt="Ensayo de laboratorio de suelos"
+            />
+            <ImagePlaceholder
+              label="capacitación SG-SST"
+              src="/fotos-sitio-actual/capacitacion-sgsst.jpg"
+              alt="Capacitación SG-SST"
+            />
           </div>
         </div>
       </div>

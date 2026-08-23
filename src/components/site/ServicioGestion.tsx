@@ -84,6 +84,7 @@ export function ServicioGestion() {
       titulo="Sistemas de gestión"
       subtitulo="Calidad, seguridad y salud en el trabajo"
       placeholderLabel="taller / brigada de emergencia"
+      placeholderSrc="/fotos-sitio-actual/dp-brigada_de_emergencia.jpg"
       linkHref="#contactenos"
       linkLabel="Agendar asesoría →"
     >
