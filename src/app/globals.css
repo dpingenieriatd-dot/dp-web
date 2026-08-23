@@ -1,26 +1,117 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Verdes */
+  --color-verde-profundo: #0a2a18;
+  --color-verde-footer: #071c10;
+  --color-verde-marca: #106334;
+  --color-verde-marca-hover: #0a4726;
+  --color-verde-claro: #57a733;
+  --color-verde-suave: #9fd48a;
+
+  /* Acento y utilidad */
+  --color-ambar: #d98314;
+  --color-ambar-hover: #efa036;
+  --color-teal: #0e6b6b;
+
+  /* Texto */
+  --color-tinta: #0c1f14;
+  --color-texto: #243329;
+  --color-texto-medio: #33453a;
+  --color-texto-suave: #5c6b60;
+  --color-texto-tenue: #6e7c71;
+  --color-gris-etiqueta: #9aa79e;
+
+  /* Fondos */
+  --color-fondo: #f7f8f4;
+  --color-fondo-verde: #f3f6f0;
+  --color-portal-bg: #f4f6f1;
+
+  /* Bordes */
+  --color-borde: #e2e6dc;
+  --color-borde-2: #e9ece4;
+  --color-borde-3: #edf0e9;
+  --color-borde-4: #e6eadf;
+  --color-input-borde: #d8ded2;
+
+  /* WhatsApp */
+  --color-whatsapp: #25d366;
+  --color-whatsapp-hover: #1fbe59;
+
+  /* Estados / pills portal */
+  --color-estado-ejec-bg: #e4f0ef;
+  --color-estado-ejec-fg: #0e6b6b;
+  --color-estado-ok-bg: #e9f3e2;
+  --color-estado-ok-fg: #2f6b1e;
+  --color-estado-pend-bg: #fbeeda;
+  --color-estado-pend-fg: #8a5209;
+  --color-estado-crit-bg: #f7e3e0;
+  --color-estado-crit-fg: #9a3a2c;
+  --color-estado-neutro-bg: #f3f6f0;
+  --color-estado-neutro-fg: #5c6b60;
+
+  /* Tipografía */
+  --font-display: var(--font-archivo);
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+
+  /* Radios */
+  --radius-btn: 2px;
+  --radius-pill: 100px;
+
+  /* Breakpoints propios del diseño. Tailwind v4 NO intercala en orden
+     numérico los breakpoints por defecto (sm/md/lg/xl) con breakpoints
+     custom o con valores arbitrary (min-[Npx]:) — el bloque @media de
+     sm: siempre termina emitido después de los custom, así que un
+     sm:grid-cols-4 puede ganarle a un w900:grid-cols-7 aunque 900>640.
+     Por eso definimos AQUÍ también el equivalente de sm (w640) y usamos
+     únicamente esta familia w* cuando dos breakpoints compiten sobre la
+     misma propiedad en un mismo elemento. */
+  --breakpoint-w640: 640px;
+  --breakpoint-w700: 700px;
+  --breakpoint-w860: 860px;
+  --breakpoint-w900: 900px;
+  --breakpoint-w1100: 1100px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--font-sans), system-ui, sans-serif;
+  }
+
+  a {
+    color: var(--color-verde-marca);
+    text-decoration: none;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd3c6;
+  border-radius: 10px;
+}
+
+@keyframes dpRise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-dp-rise {
+  animation: dpRise 0.7s ease both;
 }
