@@ -19,6 +19,7 @@ export const contacto = {
   ciudadConfirmar: true,
   instagram: "https://www.instagram.com/dypingenieriaintegral",
   instagramHandle: "@dypingenieriaintegral",
+  facebook: "https://www.facebook.com/dpingenieriaintegral",
 };
 
 export const appInternaHref = "https://app.dpingenieriaintegral.com";

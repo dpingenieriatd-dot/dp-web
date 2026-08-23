@@ -24,6 +24,14 @@ export const metadata: Metadata = {
   title: "D&P Ingeniería Integral",
   description:
     "Sistemas de seguridad en el trabajo e Ingeniería Integral. Estudios de suelo, diseño geotécnico, sistemas de gestión y suministro de EPP.",
+  icons: {
+    icon: [
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/favicon/apple-touch-icon.png",
+  },
+  manifest: "/favicon/site.webmanifest",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

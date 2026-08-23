@@ -20,7 +20,7 @@ const SERVICIOS_LINKS = [
 
 const SOCIALES: { platform: SocialPlatform; title: string; href: string; active: boolean }[] = [
   { platform: "instagram", title: "Instagram", href: contacto.instagram, active: true },
-  { platform: "facebook", title: "Facebook (pendiente)", href: "#", active: false },
+  { platform: "facebook", title: "Facebook", href: contacto.facebook, active: true },
   { platform: "linkedin", title: "LinkedIn (pendiente)", href: "#", active: false },
   { platform: "youtube", title: "YouTube (pendiente)", href: "#", active: false },
 ];
