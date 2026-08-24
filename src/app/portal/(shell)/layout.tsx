@@ -2,8 +2,11 @@ import Link from "next/link";
 import { Sidebar } from "@/components/portal/Sidebar";
 import { Topbar } from "@/components/portal/Topbar";
 import { PortalStateProvider } from "@/lib/portal-context";
+import { requirePortalSession } from "@/lib/require-portal-session";
 
-export default function PortalLayout({ children }: LayoutProps<"/portal">) {
+export default async function PortalLayout({ children }: { children: React.ReactNode }) {
+  await requirePortalSession();
+
   return (
     <PortalStateProvider>
       <div className="grid min-h-screen grid-cols-1 bg-portal-bg text-tinta text-[14px] w900:grid-cols-[252px_1fr]">

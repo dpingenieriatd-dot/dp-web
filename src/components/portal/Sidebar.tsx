@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { PortalNavLinks } from "./PortalNavLinks";
+import { logout } from "@/lib/portal-logout";
 
 export function Sidebar() {
   return (
@@ -47,13 +47,15 @@ export function Sidebar() {
           <span className="block truncate text-[12.5px] text-fondo">María Restrepo</span>
           <span className="block truncate text-[11px] text-fondo/50">Jefe HSEQ</span>
         </span>
-        <Link
-          href="/"
-          title="Salir"
-          className="flex-none font-mono text-[13px] text-fondo/50 transition-colors hover:text-verde-suave"
-        >
-          ⏻
-        </Link>
+        <form action={logout} className="flex-none">
+          <button
+            type="submit"
+            title="Salir"
+            className="font-mono text-[13px] text-fondo/50 transition-colors hover:text-verde-suave"
+          >
+            ⏻
+          </button>
+        </form>
       </div>
     </aside>
   );
