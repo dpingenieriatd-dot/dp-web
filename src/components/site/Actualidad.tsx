@@ -11,21 +11,25 @@ type Post = {
 
 const POSTS: Post[] = [
   {
-    categoria: "Geotecnia",
-    titulo: "Título de la entrada de actualidad",
-    texto: "Espacio para noticias, casos de obra o novedades normativas. Reemplazar con contenido real.",
+    categoria: "Equipo",
+    titulo: "Un equipo comprometido con la seguridad",
+    texto: "D&P Ingeniería Integral S.A.S. — un equipo comprometido con la seguridad y salud de los trabajadores.",
+    imagen: "/actualidad/equipo-seguridad.jpg",
+    href: "https://www.instagram.com/p/DGKIp9-MA1u/",
+  },
+  {
+    categoria: "Bienestar",
+    titulo: "Actividades que conectan cuerpo, mente y emoción",
+    texto: "Las actividades vivenciales conectan cuerpo, mente y emoción. No solo se piensa el cambio, se vive.",
+    imagen: "/actualidad/actividad-vivencial.jpg",
+    href: "https://www.instagram.com/p/DIuKP_jPD9E/",
   },
   {
     categoria: "SG-SST",
-    titulo: "Salir de la rutina para cuidar la salud mental",
-    texto: "En D&P llevamos el bienestar a espacios abiertos: pausas conscientes, conexión y herramientas reales para el día a día.",
-    imagen: "/actualidad/sgsst-pausas-conscientes.jpg",
-    href: "https://www.instagram.com/reel/DcBnYLzu88W/",
-  },
-  {
-    categoria: "Dotación",
-    titulo: "Título de la entrada de actualidad",
-    texto: "Espacio para noticias, casos de obra o novedades normativas. Reemplazar con contenido real.",
+    titulo: "8 tips para reducir el estrés laboral",
+    texto: "Te regalamos algunos tips que puedes implementar para disminuir el estrés laboral.",
+    imagen: "/actualidad/tips-estres-laboral.jpg",
+    href: "https://www.instagram.com/p/CmJzyveuOOA/",
   },
 ];
 
