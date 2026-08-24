@@ -1,7 +1,15 @@
 import { ImagePlaceholder } from "@/components/shared/ImagePlaceholder";
 import { contacto } from "@/lib/site-config";
 
-const POSTS = [
+type Post = {
+  categoria: string;
+  titulo: string;
+  texto: string;
+  imagen?: string;
+  href?: string;
+};
+
+const POSTS: Post[] = [
   {
     categoria: "Geotecnia",
     titulo: "Título de la entrada de actualidad",
@@ -9,8 +17,10 @@ const POSTS = [
   },
   {
     categoria: "SG-SST",
-    titulo: "Título de la entrada de actualidad",
-    texto: "Espacio para noticias, casos de obra o novedades normativas. Reemplazar con contenido real.",
+    titulo: "Salir de la rutina para cuidar la salud mental",
+    texto: "En D&P llevamos el bienestar a espacios abiertos: pausas conscientes, conexión y herramientas reales para el día a día.",
+    imagen: "/actualidad/sgsst-pausas-conscientes.jpg",
+    href: "https://www.instagram.com/reel/DcBnYLzu88W/",
   },
   {
     categoria: "Dotación",
@@ -43,20 +53,48 @@ export function Actualidad() {
         </div>
 
         <div className="grid grid-cols-1 gap-5 w640:grid-cols-2 w900:grid-cols-3">
-          {POSTS.map((post, i) => (
-            <article key={i} className="border border-borde bg-white">
-              <ImagePlaceholder label="portada del post" height={190} className="border-0" />
-              <div className="px-[22px] pt-[22px] pb-[26px]">
-                <div className="font-mono text-[11px] tracking-[.1em] text-verde-claro uppercase">
-                  {post.categoria}
+          {POSTS.map((post, i) => {
+            const card = (
+              <>
+                <ImagePlaceholder
+                  label="portada del post"
+                  src={post.imagen}
+                  alt={post.titulo}
+                  height={190}
+                  className="border-0"
+                />
+                <div className="px-[22px] pt-[22px] pb-[26px]">
+                  <div className="font-mono text-[11px] tracking-[.1em] text-verde-claro uppercase">
+                    {post.categoria}
+                  </div>
+                  <h3 className="mt-2.5 mb-2 font-display text-[19px] leading-[1.25] font-bold">
+                    {post.titulo}
+                  </h3>
+                  <p className="m-0 text-[14.5px] leading-[1.55] text-texto-suave">{post.texto}</p>
                 </div>
-                <h3 className="mt-2.5 mb-2 font-display text-[19px] leading-[1.25] font-bold">
-                  {post.titulo}
-                </h3>
-                <p className="m-0 text-[14.5px] leading-[1.55] text-texto-suave">{post.texto}</p>
-              </div>
-            </article>
-          ))}
+              </>
+            );
+
+            if (post.href) {
+              return (
+                <a
+                  key={i}
+                  href={post.href}
+                  target="_blank"
+                  rel="noopener"
+                  className="block border border-borde bg-white transition-colors hover:border-verde-claro"
+                >
+                  {card}
+                </a>
+              );
+            }
+
+            return (
+              <article key={i} className="border border-borde bg-white">
+                {card}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
