@@ -7,10 +7,11 @@ import { ServicioGestion } from "@/components/site/ServicioGestion";
 import { ServicioSuministros } from "@/components/site/ServicioSuministros";
 import { Actualidad } from "@/components/site/Actualidad";
 import { Clientes } from "@/components/site/Clientes";
+import { Testimonios } from "@/components/site/Testimonios";
 import { Contactenos } from "@/components/site/Contactenos";
 import { Footer } from "@/components/site/Footer";
 import { WhatsappFloat } from "@/components/site/WhatsappFloat";
-import { showActualidad, showClientes } from "@/lib/site-config";
+import { showActualidad, showClientes, showTestimonios } from "@/lib/site-config";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <ServicioSuministros />
       {showActualidad && <Actualidad />}
       {showClientes && <Clientes />}
+      {showTestimonios && <Testimonios />}
       <Contactenos />
       <Footer />
       <WhatsappFloat />

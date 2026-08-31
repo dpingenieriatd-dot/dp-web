@@ -2,6 +2,7 @@
 // flags de CMS/contenido en vez de constantes.
 export const showActualidad = true;
 export const showClientes = true;
+export const showTestimonios = true;
 
 // Datos de contacto. Ciudad sigue pendiente de confirmar por el cliente (ver README del handoff).
 export const contacto = {
