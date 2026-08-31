@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { contacto } from "@/lib/site-config";
 import { enviarSolicitud } from "./contacto-action";
 
@@ -11,6 +11,14 @@ const LABEL_CLASS = "font-mono text-[11px] tracking-[.1em] text-texto-suave uppe
 export function Contactenos() {
   const [estado, formAction, pending] = useActionState(enviarSolicitud, undefined);
   const sent = estado?.ok === true;
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Al enviarse con éxito, limpiar los campos (useActionState no lo hace solo).
+  // Depende de `estado` (referencia nueva por envío) para que también limpie
+  // en un segundo envío exitoso, no solo en el primero.
+  useEffect(() => {
+    if (estado?.ok) formRef.current?.reset();
+  }, [estado]);
 
   return (
     <section id="contactenos" className="scroll-mt-[90px] bg-verde-profundo px-[28px] py-[104px] text-fondo">
@@ -62,7 +70,11 @@ export function Contactenos() {
           </div>
         </div>
 
-        <form action={formAction} className="grid content-start gap-[18px] bg-fondo p-10 text-tinta">
+        <form
+          ref={formRef}
+          action={formAction}
+          className="grid content-start gap-[18px] bg-fondo p-10 text-tinta"
+        >
           {/* Honeypot anti-spam: oculto para personas, tentador para bots. */}
           <input
             type="text"
@@ -129,17 +141,17 @@ export function Contactenos() {
             <p className="m-0 text-[13px] leading-[1.5] text-[#b3261e]">{estado.error}</p>
           )}
           {sent && (
-            <p className="m-0 text-[13px] leading-[1.5] text-verde-marca">
-              Recibimos su mensaje. Le responderemos al correo indicado.
+            <p className="m-0 rounded-[2px] bg-verde-marca/10 px-3 py-2.5 text-[13px] leading-[1.5] text-verde-marca">
+              ✓ Recibimos su mensaje. Le responderemos al correo indicado.
             </p>
           )}
 
           <button
             type="submit"
-            disabled={pending || sent}
+            disabled={pending}
             className="rounded-[2px] bg-ambar px-[22px] py-4 font-mono text-[13px] font-medium tracking-[.08em] text-verde-profundo uppercase transition-colors hover:bg-ambar-hover disabled:opacity-60"
           >
-            {sent ? "Mensaje enviado ✓" : pending ? "Enviando…" : "Enviar"}
+            {pending ? "Enviando…" : "Enviar"}
           </button>
           <p className="m-0 text-[12.5px] leading-[1.5] text-texto-tenue">
             Al enviar acepta el tratamiento de sus datos conforme a nuestra{" "}
