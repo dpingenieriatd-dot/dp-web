@@ -7,7 +7,14 @@
 
 export type EstadoContacto = { ok?: boolean; error?: string } | undefined;
 
-const DESTINO = process.env.CONTACTO_DESTINO || "proyectos@dpingenieriaintegral.com";
+// Uno o varios destinatarios separados por coma (CONTACTO_DESTINO).
+const DESTINOS = (
+  process.env.CONTACTO_DESTINO ||
+  "proyectos@dpingenieriaintegral.com, angelicapaez@dpingenieriaintegral.com"
+)
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
 const REMITENTE =
   process.env.CONTACTO_REMITENTE || "Sitio web D&P <notificaciones@dpingenieriaintegral.com>";
 
@@ -87,7 +94,7 @@ export async function enviarSolicitud(
       headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
       body: JSON.stringify({
         from: REMITENTE,
-        to: [DESTINO],
+        to: DESTINOS,
         reply_to: correo,
         subject: `Solicitud web — ${servicio || "General"} — ${nombre}`,
         text,
