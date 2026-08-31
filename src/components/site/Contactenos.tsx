@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useActionState } from "react";
 import { contacto } from "@/lib/site-config";
+import { enviarSolicitud } from "./contacto-action";
 
 const INPUT_CLASS =
   "rounded-[2px] border border-input-borde bg-white px-[14px] py-[13px] text-[15px] outline-none focus:border-verde-claro";
 const LABEL_CLASS = "font-mono text-[11px] tracking-[.1em] text-texto-suave uppercase";
 
 export function Contactenos() {
-  const [sent, setSent] = useState(false);
+  const [estado, formAction, pending] = useActionState(enviarSolicitud, undefined);
+  const sent = estado?.ok === true;
 
   return (
     <section id="contactenos" className="scroll-mt-[90px] bg-verde-profundo px-[28px] py-[104px] text-fondo">
@@ -60,30 +62,41 @@ export function Contactenos() {
           </div>
         </div>
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            setSent(true);
-          }}
-          className="grid content-start gap-[18px] bg-fondo p-10 text-tinta"
-        >
+        <form action={formAction} className="grid content-start gap-[18px] bg-fondo p-10 text-tinta">
+          {/* Honeypot anti-spam: oculto para personas, tentador para bots. */}
+          <input
+            type="text"
+            name="empresa_web"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="hidden"
+          />
+
           <div className="grid grid-cols-1 gap-[18px] w640:grid-cols-2">
             <label className="grid gap-[7px]">
               <span className={LABEL_CLASS}>Nombre</span>
-              <input type="text" required placeholder="Nombre y apellido" className={INPUT_CLASS} />
+              <input
+                type="text"
+                name="nombre"
+                required
+                placeholder="Nombre y apellido"
+                className={INPUT_CLASS}
+              />
             </label>
             <label className="grid gap-[7px]">
               <span className={LABEL_CLASS}>Ciudad</span>
-              <input type="text" placeholder="Ciudad" className={INPUT_CLASS} />
+              <input type="text" name="ciudad" placeholder="Ciudad" className={INPUT_CLASS} />
             </label>
             <label className="grid gap-[7px]">
               <span className={LABEL_CLASS}>Teléfono</span>
-              <input type="tel" placeholder="300 000 0000" className={INPUT_CLASS} />
+              <input type="tel" name="telefono" placeholder="300 000 0000" className={INPUT_CLASS} />
             </label>
             <label className="grid gap-[7px]">
               <span className={LABEL_CLASS}>Correo electrónico</span>
               <input
                 type="email"
+                name="correo"
                 required
                 placeholder="nombre@empresa.com"
                 className={INPUT_CLASS}
@@ -93,7 +106,7 @@ export function Contactenos() {
 
           <label className="grid gap-[7px]">
             <span className={LABEL_CLASS}>Servicio de interés</span>
-            <select className={INPUT_CLASS}>
+            <select name="servicio" className={INPUT_CLASS} defaultValue="Ingeniería y Geotecnia">
               <option>Ingeniería y Geotecnia</option>
               <option>Sistemas de gestión (SG-SST)</option>
               <option>Suministros y dotación EPP</option>
@@ -104,17 +117,29 @@ export function Contactenos() {
           <label className="grid gap-[7px]">
             <span className={LABEL_CLASS}>Mensaje</span>
             <textarea
+              name="mensaje"
               rows={5}
+              required
               placeholder="Descríbanos su necesidad"
               className={`${INPUT_CLASS} resize-y`}
             />
           </label>
 
+          {estado?.error && (
+            <p className="m-0 text-[13px] leading-[1.5] text-[#b3261e]">{estado.error}</p>
+          )}
+          {sent && (
+            <p className="m-0 text-[13px] leading-[1.5] text-verde-marca">
+              Recibimos su mensaje. Le responderemos al correo indicado.
+            </p>
+          )}
+
           <button
             type="submit"
-            className="rounded-[2px] bg-ambar px-[22px] py-4 font-mono text-[13px] font-medium tracking-[.08em] text-verde-profundo uppercase transition-colors hover:bg-ambar-hover"
+            disabled={pending || sent}
+            className="rounded-[2px] bg-ambar px-[22px] py-4 font-mono text-[13px] font-medium tracking-[.08em] text-verde-profundo uppercase transition-colors hover:bg-ambar-hover disabled:opacity-60"
           >
-            {sent ? "Mensaje enviado ✓" : "Enviar"}
+            {sent ? "Mensaje enviado ✓" : pending ? "Enviando…" : "Enviar"}
           </button>
           <p className="m-0 text-[12.5px] leading-[1.5] text-texto-tenue">
             Al enviar acepta el tratamiento de sus datos conforme a nuestra{" "}
