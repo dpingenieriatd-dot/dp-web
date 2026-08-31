@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef, startTransition } from "react";
 import { contacto } from "@/lib/site-config";
 import { enviarSolicitud } from "./contacto-action";
 
@@ -13,9 +13,15 @@ export function Contactenos() {
   const sent = estado?.ok === true;
   const formRef = useRef<HTMLFormElement>(null);
 
-  // Al enviarse con éxito, limpiar los campos (useActionState no lo hace solo).
-  // Depende de `estado` (referencia nueva por envío) para que también limpie
-  // en un segundo envío exitoso, no solo en el primero.
+  // Se envía por onSubmit (no por el prop `action`) para que React NO limpie el
+  // formulario automáticamente: en caso de error se conservan los datos que
+  // escribió la persona. La limpieza solo ocurre abajo cuando el envío fue OK.
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    startTransition(() => formAction(fd));
+  }
+
   useEffect(() => {
     if (estado?.ok) formRef.current?.reset();
   }, [estado]);
@@ -72,7 +78,7 @@ export function Contactenos() {
 
         <form
           ref={formRef}
-          action={formAction}
+          onSubmit={onSubmit}
           className="grid content-start gap-[18px] bg-fondo p-10 text-tinta"
         >
           {/* Honeypot anti-spam: oculto para personas, tentador para bots. */}
