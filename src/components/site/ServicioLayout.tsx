@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ImagePlaceholder } from "@/components/shared/ImagePlaceholder";
 
 type ServicioLayoutProps = {
@@ -8,6 +9,9 @@ type ServicioLayoutProps = {
   subtitulo: string;
   placeholderLabel: string;
   placeholderSrc?: string;
+  /** Mascota que acompaña a la foto principal (ocupa el 25% restante). */
+  mascotSrc?: string;
+  mascotAlt?: string;
   linkHref: string;
   linkLabel: string;
   children: React.ReactNode;
@@ -21,6 +25,8 @@ export function ServicioLayout({
   subtitulo,
   placeholderLabel,
   placeholderSrc,
+  mascotSrc,
+  mascotAlt,
   linkHref,
   linkLabel,
   children,
@@ -36,12 +42,33 @@ export function ServicioLayout({
             {titulo}
           </h3>
           <p className="mb-6 text-[16px] text-texto-suave">{subtitulo}</p>
-          <ImagePlaceholder
-            label={placeholderLabel}
-            src={placeholderSrc}
-            alt={titulo}
-            height={200}
-          />
+          {mascotSrc ? (
+            <div className="flex gap-3">
+              <div className="relative h-[200px] min-w-0 flex-1 overflow-hidden border border-borde bg-white">
+                <Image
+                  src={mascotSrc}
+                  alt={mascotAlt ?? titulo}
+                  fill
+                  sizes="140px"
+                  className="object-contain p-1.5"
+                />
+              </div>
+              <ImagePlaceholder
+                label={placeholderLabel}
+                src={placeholderSrc}
+                alt={titulo}
+                height={200}
+                className="min-w-0 flex-[3]"
+              />
+            </div>
+          ) : (
+            <ImagePlaceholder
+              label={placeholderLabel}
+              src={placeholderSrc}
+              alt={titulo}
+              height={200}
+            />
+          )}
           <a
             href={linkHref}
             className="mt-6 inline-block border-b border-verde-claro pb-1 font-mono text-[12.5px] tracking-[.08em] text-verde-marca uppercase transition-colors hover:text-verde-claro"

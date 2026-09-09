@@ -21,6 +21,8 @@ export function ServicioSuministros() {
       subtitulo="Souvenirs – Dotación EPP"
       placeholderLabel="dotación industrial"
       placeholderSrc="/fotos-sitio-actual/foto-dotacion-epp.jpg"
+      mascotSrc="/simon6.png"
+      mascotAlt="Mascota de D&P Ingeniería Integral con casco, gafas y chaleco de seguridad"
       linkHref="#contactenos"
       linkLabel="Pedir catálogo →"
     >
