@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { siteUrl } from "@/lib/site-config";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -21,6 +22,8 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  alternates: { canonical: "/" },
   title: "D&P Ingeniería Integral",
   description:
     "Sistemas de seguridad en el trabajo e Ingeniería Integral. Estudios de suelo, diseño geotécnico, sistemas de gestión y suministro de EPP.",

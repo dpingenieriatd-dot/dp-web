@@ -23,4 +23,8 @@ export const contacto = {
   facebook: "https://www.facebook.com/dpingenieriaintegral",
 };
 
+// Dominio público principal (dpingenieriaintegral.com redirige aquí). Base de URLs absolutas
+// para metadatos, sitemap y robots.
+export const siteUrl = "https://www.dpingenieriaintegral.com";
+
 export const appInternaHref = "https://app.dpingenieriaintegral.com";

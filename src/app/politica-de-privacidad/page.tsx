@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Política de privacidad — D&P Ingeniería Integral",
   description:
     "Cómo D&P Ingeniería Integral recopila, usa y protege la información de quienes visitan este sitio y utilizan el portal de clientes.",
+  alternates: { canonical: "/politica-de-privacidad" },
 };
 
 export default function PoliticaDePrivacidadPage() {
