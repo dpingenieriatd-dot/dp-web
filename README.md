@@ -54,7 +54,9 @@ src/
     shared/                    Componentes compartidos
   lib/
     site-config.ts             Datos de contacto y flags de contenido del sitio
+    client-logos.ts            Lista de logos de clientes (public/logosclientes)
     portal-auth.ts             Verificación de credenciales y de la cookie de sesión
+    portal-logout.ts           Server Action de cierre de sesión (borra la cookie)
     require-portal-session.ts  Guard "seguro" usado en el layout del portal
     portal-data.ts             Datos de demostración del portal (empresa ficticia)
     portal-context.tsx         Estado de cliente del portal (carrito, checkout, etc.)
