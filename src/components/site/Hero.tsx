@@ -50,8 +50,8 @@ export function Hero() {
             Sistemas de seguridad en el trabajo e Ingeniería Integral
           </h1>
           <p className="mt-[22px] max-w-[52ch] text-[18px] leading-[1.65] text-fondo/72">
-            Estudios de suelo, diseño geotécnico, sistemas de gestión y suministro de EPP para
-            proyectos urbanísticos, viales y de infraestructura.
+            Estudios de suelo, diseño geotécnico, sistemas de gestión en seguridad y salud en el
+            trabajo y suministro de EPP para proyectos urbanísticos, viales y de infraestructura.
           </p>
           <div className="mt-9 flex flex-wrap gap-3.5">
             <a

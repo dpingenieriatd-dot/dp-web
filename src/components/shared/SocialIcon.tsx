@@ -1,47 +1,48 @@
-export type SocialPlatform = "instagram" | "facebook" | "linkedin" | "youtube";
+export type SocialPlatform = "instagram" | "facebook" | "linkedin";
 
-const ICON_PROPS = {
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.8,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
-};
+// Logos con los colores oficiales de cada marca (no heredan currentColor).
 
 function InstagramGlyph() {
   return (
-    <svg {...ICON_PROPS}>
-      <rect x="2.5" y="2.5" width="19" height="19" rx="5" />
-      <circle cx="12" cy="12" r="4.3" />
-      <line x1="17.6" y1="6.4" x2="17.6" y2="6.4" />
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <defs>
+        <linearGradient id="dp-instagram-gradiente" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stopColor="#FEDA75" />
+          <stop offset=".3" stopColor="#FA7E1E" />
+          <stop offset=".55" stopColor="#D62976" />
+          <stop offset=".8" stopColor="#962FBF" />
+          <stop offset="1" stopColor="#4F5BD5" />
+        </linearGradient>
+      </defs>
+      <rect width="24" height="24" rx="6" fill="url(#dp-instagram-gradiente)" />
+      <rect x="5" y="5" width="14" height="14" rx="4" fill="none" stroke="#fff" strokeWidth="1.8" />
+      <circle cx="12" cy="12" r="3.4" fill="none" stroke="#fff" strokeWidth="1.8" />
+      <circle cx="16.2" cy="7.8" r="1" fill="#fff" />
     </svg>
   );
 }
 
 function FacebookGlyph() {
   return (
-    <svg {...ICON_PROPS}>
-      <path d="M15.5 2.5h-2.2A4.3 4.3 0 0 0 9 6.8v2.4H6.7v3.6H9v8.7h3.7v-8.7h2.6l.5-3.6h-3.1V7.1c0-.6.4-1 1-1h2.4z" />
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="12" fill="#0866FF" />
+      <path
+        fill="#fff"
+        d="M13 23.6v-8.8h2.6l.4-3H13V9.9c0-.9.3-1.5 1.5-1.5H16V5.8c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.3H7.5v3H10v8.8z"
+      />
     </svg>
   );
 }
 
 function LinkedinGlyph() {
   return (
-    <svg {...ICON_PROPS}>
-      <path d="M15.3 9.3a5 5 0 0 1 5 5v6.2h-3.5v-6.2a1.7 1.7 0 0 0-3.4 0v6.2h-3.5V9.6h3.5v1.4a5 5 0 0 1 1.9-1.7z" />
-      <rect x="2.7" y="9.6" width="3.4" height="10.9" />
-      <circle cx="4.4" cy="4.9" r="1.8" />
-    </svg>
-  );
-}
-
-function YoutubeGlyph() {
-  return (
-    <svg {...ICON_PROPS}>
-      <path d="M21.5 7.2a3 3 0 0 0-2.1-2.1C17.6 4.6 12 4.6 12 4.6s-5.6 0-7.4.5A3 3 0 0 0 2.5 7.2 30 30 0 0 0 2 12a30 30 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.8.5 7.4.5 7.4.5s5.6 0 7.4-.5a3 3 0 0 0 2.1-2.1A30 30 0 0 0 22 12a30 30 0 0 0-.5-4.8z" />
-      <polygon points="10 15.3 15.2 12 10 8.7" />
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect width="24" height="24" rx="4" fill="#0A66C2" />
+      <g fill="#fff" transform="translate(4.4 4.2) scale(.66)">
+        <path d="M15.3 9.3a5 5 0 0 1 5 5v6.2h-3.5v-6.2a1.7 1.7 0 0 0-3.4 0v6.2h-3.5V9.6h3.5v1.4a5 5 0 0 1 1.9-1.7z" />
+        <rect x="2.7" y="9.6" width="3.4" height="10.9" />
+        <circle cx="4.4" cy="4.9" r="1.8" />
+      </g>
     </svg>
   );
 }
@@ -50,7 +51,6 @@ const GLYPHS: Record<SocialPlatform, () => React.ReactElement> = {
   instagram: InstagramGlyph,
   facebook: FacebookGlyph,
   linkedin: LinkedinGlyph,
-  youtube: YoutubeGlyph,
 };
 
 export function SocialIcon({

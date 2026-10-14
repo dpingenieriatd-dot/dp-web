@@ -6,11 +6,11 @@ export const showTestimonios = true;
 
 // Datos de contacto. Ciudad sigue pendiente de confirmar por el cliente (ver README del handoff).
 export const contacto = {
-  telefono: "+57 302 858 5911",
+  telefono: "+57 310 772 0548",
   telefonoConfirmar: false,
   correo: "proyectos@dpingenieriaintegral.com",
   correoConfirmar: false,
-  whatsappHref: "https://wa.me/573028585911",
+  whatsappHref: "https://wa.me/573107720548",
   horarios: {
     semana: "Lunes a viernes 8:00 a.m. – 5:00 p.m.",
     sabado: "Sábados 8:00 a.m. – 12:00 m.",
