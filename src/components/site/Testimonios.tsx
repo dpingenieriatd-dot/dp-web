@@ -53,7 +53,7 @@ export function Testimonios() {
   return (
     <section
       id="testimonios"
-      className="scroll-mt-[90px] border-t border-borde bg-fondo px-[28px] py-[100px]"
+      className="scroll-mt-[102px] border-t border-borde bg-fondo px-[28px] py-[100px]"
     >
       <div className="mx-auto max-w-[1240px]">
         <div className="mb-11">

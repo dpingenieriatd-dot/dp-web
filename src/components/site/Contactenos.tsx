@@ -27,7 +27,7 @@ export function Contactenos() {
   }, [estado]);
 
   return (
-    <section id="contactenos" className="scroll-mt-[90px] bg-verde-profundo px-[28px] py-[104px] text-fondo">
+    <section id="contactenos" className="scroll-mt-[102px] bg-verde-profundo px-[28px] py-[104px] text-fondo">
       <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-20 w900:grid-cols-[1fr_1.05fr]">
         <div>
           <div className="font-mono text-[12px] tracking-[.14em] text-verde-suave uppercase">

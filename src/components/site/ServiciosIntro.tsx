@@ -1,6 +1,6 @@
 export function ServiciosIntro() {
   return (
-    <section id="servicios" className="scroll-mt-[90px] border-t border-borde bg-white px-[28px] pt-[104px] pb-10">
+    <section id="servicios" className="scroll-mt-[102px] border-t border-borde bg-white px-[28px] pt-[104px] pb-10">
       <div className="mx-auto flex max-w-[1240px] flex-wrap items-end justify-between gap-10">
         <div>
           <div className="font-mono text-[12px] tracking-[.14em] text-teal uppercase">

@@ -35,7 +35,7 @@ const POSTS: Post[] = [
 
 export function Actualidad() {
   return (
-    <section id="actualidad" className="scroll-mt-[90px] border-t border-borde bg-fondo px-[28px] py-[100px]">
+    <section id="actualidad" className="scroll-mt-[102px] border-t border-borde bg-fondo px-[28px] py-[100px]">
       <div className="mx-auto max-w-[1240px]">
         <div className="mb-11 flex flex-wrap items-end justify-between gap-10">
           <div>

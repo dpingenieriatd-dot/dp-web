@@ -32,7 +32,7 @@ export function ServicioLayout({
   children,
 }: ServicioLayoutProps) {
   return (
-    <section id={id} className={`scroll-mt-[90px] px-[28px] py-[60px] ${bgClassName}`}>
+    <section id={id} className={`scroll-mt-[102px] px-[28px] py-[60px] ${bgClassName}`}>
       <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-16 border-t border-borde pt-11 w900:grid-cols-[.72fr_1.28fr]">
         <div>
           <div className="font-mono text-[11.5px] tracking-[.12em] text-verde-claro">

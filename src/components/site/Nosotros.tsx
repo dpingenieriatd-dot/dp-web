@@ -8,7 +8,7 @@ const VALORES = [
 
 export function Nosotros() {
   return (
-    <section id="nosotros" className="scroll-mt-[90px] bg-fondo px-[28px] py-[110px]">
+    <section id="nosotros" className="scroll-mt-[102px] bg-fondo px-[28px] py-[110px]">
       <div className="mx-auto grid max-w-[1240px] grid-cols-1 items-center gap-[72px] w900:grid-cols-2">
         <div>
           <div className="font-mono text-[12px] tracking-[.14em] text-teal uppercase">

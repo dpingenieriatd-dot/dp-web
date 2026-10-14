@@ -115,3 +115,25 @@
 .animate-dp-rise {
   animation: dpRise 0.7s ease both;
 }
+
+@keyframes dpPulso {
+  0% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+
+.animate-dp-pulso {
+  animation: dpPulso 2s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-dp-pulso {
+    animation: none;
+  }
+}

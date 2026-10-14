@@ -18,9 +18,9 @@ export function Header() {
           <Image
             src="/logo-dyp.png"
             alt="D&P Ingeniería Integral"
-            width={87}
-            height={62}
-            className="h-[62px] w-auto"
+            width={104}
+            height={74}
+            className="h-[74px] w-auto"
             priority
           />
         </Link>

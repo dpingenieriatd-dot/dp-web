@@ -1,4 +1,4 @@
-import { ImagePlaceholder } from "@/components/shared/ImagePlaceholder";
+import Image from "next/image";
 
 const SERVICIOS = [
   {
@@ -23,16 +23,35 @@ const SERVICIOS = [
 
 export function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden bg-verde-profundo text-fondo scroll-mt-[90px]">
+    <section id="inicio" className="relative overflow-hidden bg-verde-profundo text-fondo scroll-mt-[102px]">
+      {/* Foto de fondo: en escritorio se corre a la derecha para que el equipo en campo no quede
+          detrás del texto; el lado izquierdo se funde con el verde de marca. */}
+      <div className="absolute inset-0 w900:left-[22%]">
+        <Image
+          src="/fotos-sitio-actual/foto-geotecnia-obra.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_40%]"
+        />
+      </div>
       <div
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 bg-verde-profundo/80 w900:bg-transparent"
         style={{
-          background:
-            "radial-gradient(120% 90% at 88% 8%, rgba(87,167,51,.30) 0%, rgba(10,42,24,0) 62%)",
+          backgroundImage:
+            "linear-gradient(90deg, #0A2A18 0%, #0A2A18 24%, rgba(10,42,24,.86) 40%, rgba(10,42,24,.45) 62%, rgba(10,42,24,.15) 100%)",
         }}
       />
       <div
-        className="pointer-events-none absolute inset-0 opacity-10"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(0deg, #0A2A18 0%, rgba(10,42,24,.85) 22%, rgba(10,42,24,0) 52%), linear-gradient(180deg, rgba(10,42,24,.55) 0%, rgba(10,42,24,0) 18%)",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[.06]"
         style={{
           backgroundImage:
             "linear-gradient(#F7F8F4 1px, transparent 1px), linear-gradient(90deg, #F7F8F4 1px, transparent 1px)",
@@ -40,8 +59,8 @@ export function Hero() {
         }}
       />
 
-      <div className="relative mx-auto grid max-w-[1240px] grid-cols-1 items-end gap-14 px-[28px] pt-24 w900:grid-cols-[1.15fr_.85fr]">
-        <div className="animate-dp-rise">
+      <div className="relative mx-auto max-w-[1240px] px-[28px] pt-24 pb-[72px] w900:pt-32 w900:pb-28">
+        <div className="animate-dp-rise max-w-[640px]">
           <div className="inline-flex items-center gap-2.5 rounded-full border border-verde-suave/35 px-[14px] py-2 font-mono text-[12px] tracking-[.14em] text-verde-suave uppercase">
             <span className="block h-1.5 w-1.5 rounded-full bg-verde-claro" />
             Ingeniería civil · SG-SST · Dotación
@@ -49,7 +68,7 @@ export function Hero() {
           <h1 className="mt-[26px] text-[40px] leading-[1.05] font-extrabold tracking-[-.02em] font-display text-balance w900:text-[66px] w900:leading-[1.02]">
             Sistemas de seguridad en el trabajo e Ingeniería Integral
           </h1>
-          <p className="mt-[22px] max-w-[52ch] text-[18px] leading-[1.65] text-fondo/72">
+          <p className="mt-[22px] max-w-[52ch] text-[18px] leading-[1.65] text-fondo/80">
             Estudios de suelo, diseño geotécnico, sistemas de gestión en seguridad y salud en el
             trabajo y suministro de EPP para proyectos urbanísticos, viales y de infraestructura.
           </p>
@@ -69,16 +88,9 @@ export function Hero() {
           </div>
         </div>
 
-        <ImagePlaceholder
-          variant="dark"
-          height={340}
-          label="foto de obra / equipo en campo — 1200×900"
-          src="/fotos-sitio-actual/foto-geotecnia-obra.jpg"
-          alt="Equipo de ingenieros en campo durante una exploración geotécnica"
-        />
       </div>
 
-      <div className="relative mx-auto max-w-[1240px] px-[28px] pt-[72px]">
+      <div className="relative mx-auto max-w-[1240px] px-[28px]">
         <div className="grid grid-cols-1 gap-px border border-fondo/16 bg-fondo/16 w700:grid-cols-3">
           {SERVICIOS.map((s) => (
             <a

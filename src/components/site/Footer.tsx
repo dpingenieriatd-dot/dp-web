@@ -38,7 +38,7 @@ export function Footer() {
       <div className="mx-auto max-w-[1240px]">
         <div className="grid grid-cols-1 gap-12 w640:grid-cols-2 w900:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
           <div>
-            <Image src="/logo-dyp.png" alt="D&P Ingeniería Integral" width={91} height={65} className="h-[65px] w-auto" />
+            <Image src="/logo-dyp.png" alt="D&P Ingeniería Integral" width={109} height={78} className="h-[78px] w-auto" />
             <p className="mt-5 max-w-[34ch] text-[14.5px] leading-[1.6]">
               Sistemas de seguridad en el trabajo e Ingeniería Integral. Trabajo y rectitud en
               cada proyecto.
@@ -112,12 +112,14 @@ export function Footer() {
               <span>{contacto.ciudad}</span>
               <span>{contacto.horarios.corto}</span>
             </div>
-            <Link
-              href="/#contactenos"
+            <a
+              href={contacto.whatsappHref}
+              target="_blank"
+              rel="noopener"
               className="mt-5 inline-block rounded-[2px] bg-verde-marca px-[18px] py-[13px] font-mono text-[12px] tracking-[.08em] text-white uppercase transition-colors hover:bg-verde-marca-hover"
             >
               Escribir por WhatsApp
-            </Link>
+            </a>
           </div>
         </div>
 
