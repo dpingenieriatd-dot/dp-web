@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  /* Verdes */
-  --color-verde-profundo: #0a2a18;
+  /* Verdes (Guía de Redacción Web 2026, cap. 8) */
+  --color-verde-profundo: #005323;
   --color-verde-footer: #071c10;
-  --color-verde-marca: #106334;
-  --color-verde-marca-hover: #0a4726;
-  --color-verde-claro: #57a733;
+  --color-verde-marca: #007832;
+  --color-verde-marca-hover: #005323;
+  --color-verde-claro: #68a93a;
+  --color-verde-brillante: #119834;
+  --color-verde-secundario: #52a22e;
   --color-verde-suave: #9fd48a;
 
-  /* Acento y utilidad */
+  /* Acento y utilidad (ámbar solo para estados del portal) */
   --color-ambar: #d98314;
   --color-ambar-hover: #efa036;
   --color-teal: #0e6b6b;

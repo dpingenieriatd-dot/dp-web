@@ -12,7 +12,7 @@ export function ServiciosIntro() {
         </div>
         <a
           href="#contactenos"
-          className="border-b border-ambar pb-1 font-mono text-[12.5px] tracking-[.08em] text-tinta uppercase transition-colors hover:text-ambar"
+          className="border-b border-verde-claro pb-1 font-mono text-[12.5px] tracking-[.08em] text-tinta uppercase transition-colors hover:text-verde-marca"
         >
           Descargar portafolio ↓
         </a>

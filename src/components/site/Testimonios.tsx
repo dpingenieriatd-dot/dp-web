@@ -40,7 +40,7 @@ function Estrellas({ cantidad }: { cantidad: number }) {
           height="18"
           viewBox="0 0 20 20"
           aria-hidden="true"
-          className={i < cantidad ? "fill-ambar" : "fill-borde-2"}
+          className={i < cantidad ? "fill-verde-brillante" : "fill-borde-2"}
         >
           <path d="M10 1.6l2.6 5.27 5.82.85-4.21 4.1.99 5.79L10 14.9l-5.2 2.73.99-5.79L1.58 7.72l5.82-.85z" />
         </svg>

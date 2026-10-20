@@ -155,7 +155,7 @@ export function Contactenos() {
           <button
             type="submit"
             disabled={pending}
-            className="rounded-[2px] bg-ambar px-[22px] py-4 font-mono text-[13px] font-medium tracking-[.08em] text-verde-profundo uppercase transition-colors hover:bg-ambar-hover disabled:opacity-60"
+            className="rounded-[2px] bg-verde-marca px-[22px] py-4 font-mono text-[13px] font-medium tracking-[.08em] text-white uppercase transition-colors hover:bg-verde-marca-hover disabled:opacity-60"
           >
             {pending ? "Enviando…" : "Enviar"}
           </button>

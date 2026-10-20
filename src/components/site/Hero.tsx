@@ -40,14 +40,14 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 bg-verde-profundo/80 w900:bg-transparent"
         style={{
           backgroundImage:
-            "linear-gradient(90deg, #0A2A18 0%, #0A2A18 24%, rgba(10,42,24,.86) 40%, rgba(10,42,24,.45) 62%, rgba(10,42,24,.15) 100%)",
+            "linear-gradient(90deg, #005323 0%, #005323 24%, rgba(0,83,35,.86) 40%, rgba(0,83,35,.45) 62%, rgba(0,83,35,.15) 100%)",
         }}
       />
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage:
-            "linear-gradient(0deg, #0A2A18 0%, rgba(10,42,24,.85) 22%, rgba(10,42,24,0) 52%), linear-gradient(180deg, rgba(10,42,24,.55) 0%, rgba(10,42,24,0) 18%)",
+            "linear-gradient(0deg, #005323 0%, rgba(0,83,35,.85) 22%, rgba(0,83,35,0) 52%), linear-gradient(180deg, rgba(0,83,35,.55) 0%, rgba(0,83,35,0) 18%)",
         }}
       />
       <div
@@ -75,7 +75,7 @@ export function Hero() {
           <div className="mt-9 flex flex-wrap gap-3.5">
             <a
               href="#contactenos"
-              className="rounded-[2px] bg-ambar px-[26px] py-4 font-mono text-[13px] font-medium tracking-[.08em] text-verde-profundo uppercase transition-colors hover:bg-ambar-hover"
+              className="rounded-[2px] bg-fondo px-[26px] py-4 font-mono text-[13px] font-medium tracking-[.08em] text-verde-marca uppercase transition-colors hover:bg-white"
             >
               Solicitar cotización
             </a>
@@ -96,7 +96,7 @@ export function Hero() {
             <a
               key={s.href}
               href={s.href}
-              className="block bg-verde-profundo px-[26px] pt-[30px] pb-[34px] transition-colors hover:bg-[#0F3A22]"
+              className="block bg-verde-profundo px-[26px] pt-[30px] pb-[34px] transition-colors hover:bg-verde-marca"
             >
               <div className="font-mono text-[11.5px] tracking-[.12em] text-verde-suave">
                 {s.numero}
@@ -105,7 +105,7 @@ export function Hero() {
                 {s.titulo}
               </h2>
               <p className="m-0 text-[15px] text-fondo/66">{s.subtitulo}</p>
-              <span className="mt-[18px] inline-block font-mono text-[12px] tracking-[.08em] text-ambar uppercase">
+              <span className="mt-[18px] inline-block font-mono text-[12px] tracking-[.08em] text-verde-suave uppercase">
                 Ver servicio →
               </span>
             </a>
