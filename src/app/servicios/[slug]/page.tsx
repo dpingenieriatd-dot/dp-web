@@ -11,6 +11,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { SiteShell } from "@/components/site/SiteShell";
 import { btnPrimario } from "@/components/site/ui";
 import { PAGINAS_SERVICIO, hrefCotizar } from "@/lib/servicios";
+import { datosEstructuradosServicio, jsonLd, metadatosPagina } from "@/lib/seo";
 
 // Páginas de servicio de la Guía 2026 (cap. 4): título, párrafo de beneficio, grupos de servicios
 // y un único llamado principal a la acción.
@@ -28,11 +29,7 @@ export async function generateMetadata(props: PageProps<"/servicios/[slug]">): P
   const { slug } = await props.params;
   const e = buscar(slug);
   if (!e) return {};
-  return {
-    title: e.titulo,
-    description: `${e.pagina.titular} ${e.pagina.intro}`,
-    alternates: { canonical: e.href },
-  };
+  return metadatosPagina({ titulo: e.pagina.seoTitulo, descripcion: e.pagina.seoDescripcion, ruta: e.href });
 }
 
 export default async function ServicioPage(props: PageProps<"/servicios/[slug]">) {
@@ -43,6 +40,12 @@ export default async function ServicioPage(props: PageProps<"/servicios/[slug]">
 
   return (
     <SiteShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd(
+          datosEstructuradosServicio({ nombre: e.titulo, descripcion: pagina.seoDescripcion, ruta: e.href }),
+        )}
+      />
       <PageHero
         eyebrow={`Especialidad ${e.numero} · ${e.titulo}`}
         titulo={pagina.titular}

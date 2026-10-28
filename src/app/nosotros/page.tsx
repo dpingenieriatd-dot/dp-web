@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metadatosPagina } from "@/lib/seo";
 import Link from "next/link";
 import { CierreComercial } from "@/components/site/CierreComercial";
 import { Encabezado } from "@/components/site/Encabezado";
@@ -9,12 +10,12 @@ import { Proposito } from "@/components/site/Proposito";
 import { SiteShell } from "@/components/site/SiteShell";
 import { btnSecundario } from "@/components/site/ui";
 
-export const metadata: Metadata = {
-  title: "Nosotros",
-  description:
-    "D&P Ingeniería Integral S.A.S. es una empresa colombiana que desarrolla soluciones en ingeniería civil, seguridad y salud en el trabajo, gestión humana y suministros empresariales.",
-  alternates: { canonical: "/nosotros" },
-};
+export const metadata: Metadata = metadatosPagina({
+  titulo: "Nosotros",
+  descripcion:
+    "Empresa colombiana de ingeniería civil, seguridad y salud en el trabajo, gestión humana y suministros. Ingeniería aplicada al cuidado de las personas.",
+  ruta: "/nosotros",
+});
 
 // Guía 2026, cap. 6.1. Los valores Trabajo, Rectitud e Integralidad vienen del sitio anterior;
 // no se publican misión, visión ni certificaciones sin aval gerencial.

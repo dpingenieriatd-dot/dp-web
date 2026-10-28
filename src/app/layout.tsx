@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { Archivo, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { siteUrl } from "@/lib/site-config";
+import { IMAGEN_COMPARTIR, NOMBRE_SITIO } from "@/lib/seo";
 import "./globals.css";
+
+const TITULO_INICIO = "D&P Ingeniería Integral | Ingeniería, SG-SST y Gestión Humana";
+const DESCRIPCION_INICIO =
+  "Ingeniería civil y geotecnia, SG-SST, gestión humana y suministros para empresas en Colombia. Soluciones para organizaciones más seguras y eficientes.";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -25,11 +30,26 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   alternates: { canonical: "/" },
   title: {
-    default: "D&P Ingeniería Integral — Soluciones integrales para organizaciones",
-    template: "%s | D&P Ingeniería Integral",
+    default: TITULO_INICIO,
+    template: `%s | ${NOMBRE_SITIO}`,
   },
-  description:
-    "Ingeniería civil y geotecnia, seguridad y salud en el trabajo, gestión humana y suministros empresariales. Soluciones integrales para organizaciones más seguras, saludables y eficientes.",
+  description: DESCRIPCION_INICIO,
+  // Vista previa al compartir el inicio. Las demás páginas definen la suya con metadatosPagina().
+  openGraph: {
+    type: "website",
+    locale: "es_CO",
+    siteName: NOMBRE_SITIO,
+    url: "/",
+    title: TITULO_INICIO,
+    description: DESCRIPCION_INICIO,
+    images: [IMAGEN_COMPARTIR],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITULO_INICIO,
+    description: DESCRIPCION_INICIO,
+    images: [IMAGEN_COMPARTIR.url],
+  },
   icons: {
     icon: [
       { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },

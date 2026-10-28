@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { metadatosPagina } from "@/lib/seo";
 import { EnlaceInstagram, ListaPublicaciones } from "@/components/site/Actualidad";
 import { CierreComercial } from "@/components/site/CierreComercial";
 import { PageHero } from "@/components/site/PageHero";
 import { SiteShell } from "@/components/site/SiteShell";
 
-export const metadata: Metadata = {
-  title: "Actualidad",
-  description:
+export const metadata: Metadata = metadatosPagina({
+  titulo: "Actualidad",
+  descripcion:
     "Actividades, aprendizajes y recursos prácticos de D&P sobre seguridad, salud mental, desarrollo humano e ingeniería.",
-  alternates: { canonical: "/actualidad" },
-};
+  ruta: "/actualidad",
+});
 
 export default function ActualidadPage() {
   return (

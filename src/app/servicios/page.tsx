@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { metadatosPagina } from "@/lib/seo";
 import { CierreComercial } from "@/components/site/CierreComercial";
 import { TarjetasEspecialidades } from "@/components/site/Especialidades";
 import { PageHero } from "@/components/site/PageHero";
 import { SiteShell } from "@/components/site/SiteShell";
 
-export const metadata: Metadata = {
-  title: "Servicios",
-  description:
-    "Ingeniería civil y geotecnia, seguridad y salud en el trabajo, gestión humana y suministros empresariales: cuatro especialidades de D&P Ingeniería Integral.",
-  alternates: { canonical: "/servicios" },
-};
+export const metadata: Metadata = metadatosPagina({
+  titulo: "Ingeniería, SG-SST y gestión humana",
+  descripcion:
+    "Ingeniería civil y geotecnia, seguridad y salud en el trabajo, gestión humana y suministros empresariales: cuatro especialidades, un mismo compromiso.",
+  ruta: "/servicios",
+});
 
 export default function ServiciosPage() {
   return (

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { metadatosPagina } from "@/lib/seo";
 import Link from "next/link";
 import { CierreComercial } from "@/components/site/CierreComercial";
 import { Encabezado } from "@/components/site/Encabezado";
@@ -8,12 +9,12 @@ import { SiteShell } from "@/components/site/SiteShell";
 import { btnPrimario, btnSecundario, enlaceFlecha } from "@/components/site/ui";
 import { contacto } from "@/lib/site-config";
 
-export const metadata: Metadata = {
-  title: "Tienda D&P",
-  description:
+export const metadata: Metadata = metadatosPagina({
+  titulo: "Souvenirs corporativos, dotación y EPP",
+  descripcion:
     "Souvenirs corporativos, dotación laboral, elementos de protección personal y suministros para empresas. Solicita tu cotización.",
-  alternates: { canonical: "/tienda" },
-};
+  ruta: "/tienda",
+});
 
 const COTIZAR = "/contacto?servicio=tienda";
 

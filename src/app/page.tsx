@@ -9,6 +9,7 @@ import { CierreComercial } from "@/components/site/CierreComercial";
 import { Contactenos } from "@/components/site/Contactenos";
 import { SiteShell } from "@/components/site/SiteShell";
 import { showActualidad, showClientes, showTestimonios } from "@/lib/site-config";
+import { datosEstructuradosEmpresa, jsonLd } from "@/lib/seo";
 
 // Estructura de la Guía de Redacción Web 2026 (cap. 3): portada, especialidades, nosotros,
 // propósito, experiencia, actualidad, cierre comercial y contacto. El detalle de cada servicio
@@ -16,6 +17,7 @@ import { showActualidad, showClientes, showTestimonios } from "@/lib/site-config
 export default function Home() {
   return (
     <SiteShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(datosEstructuradosEmpresa())} />
       <Hero />
       <Especialidades />
       <Nosotros />

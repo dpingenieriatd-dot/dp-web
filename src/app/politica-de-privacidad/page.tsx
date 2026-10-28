@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { metadatosPagina } from "@/lib/seo";
 import { LegalPageLayout } from "@/components/site/LegalPageLayout";
 import { contacto } from "@/lib/site-config";
 
-export const metadata: Metadata = {
-  title: "Política de privacidad",
-  description:
-    "Cómo D&P Ingeniería Integral recopila, usa y protege la información de quienes visitan este sitio y utilizan el portal de clientes.",
-  alternates: { canonical: "/politica-de-privacidad" },
-};
+export const metadata: Metadata = metadatosPagina({
+  titulo: "Política de privacidad",
+  descripcion:
+    "Cómo D&P Ingeniería Integral recopila, usa y protege la información de quienes visitan este sitio y usan el portal de clientes.",
+  ruta: "/politica-de-privacidad",
+});
 
 export default function PoliticaDePrivacidadPage() {
   return (

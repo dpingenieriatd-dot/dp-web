@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { metadatosPagina } from "@/lib/seo";
 import { CierreComercial } from "@/components/site/CierreComercial";
 import { Clientes } from "@/components/site/Clientes";
 import { PageHero } from "@/components/site/PageHero";
 import { SiteShell } from "@/components/site/SiteShell";
 import { Testimonios } from "@/components/site/Testimonios";
 
-export const metadata: Metadata = {
-  title: "Experiencia",
-  description:
+export const metadata: Metadata = metadatosPagina({
+  titulo: "Experiencia, clientes y testimonios",
+  descripcion:
     "Clientes, proyectos y testimonios que respaldan el trabajo de D&P Ingeniería Integral en prevención, bienestar, talento humano e ingeniería.",
-  alternates: { canonical: "/experiencia" },
-};
+  ruta: "/experiencia",
+});
 
 // Guía 2026, cap. 6.2: se conservan los clientes y los dos testimonios publicados. Los casos
 // nuevos se agregan solo con material aprobado por D&P.

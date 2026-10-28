@@ -6,6 +6,9 @@ export type IconoEspecialidad = "edificios" | "casco" | "personas" | "carrito";
 export type GrupoServicio = { titulo: string; texto: string };
 
 export type PaginaServicio = {
+  /** Título y descripción para Google (no se muestran en la página). */
+  seoTitulo: string;
+  seoDescripcion: string;
   titular: string;
   intro: string;
   cta: string;
@@ -44,6 +47,9 @@ export const ESPECIALIDADES: Especialidad[] = [
     fotoAlt: "Ingenieros de D&P con casco revisando planos en obra",
     icono: "edificios",
     pagina: {
+      seoTitulo: "Estudios de suelos, geotecnia e ingeniería civil",
+      seoDescripcion:
+        "Estudios de suelos, ensayos de laboratorio, diseño geotécnico, estabilidad de taludes y topografía para proyectos de infraestructura en Colombia.",
       titular: "Soluciones técnicas para proyectos de infraestructura.",
       intro:
         "Acompañamos la planeación, el diseño y el desarrollo de proyectos mediante estudios, consultoría y servicios especializados de ingeniería civil y geotecnia.",
@@ -93,6 +99,9 @@ export const ESPECIALIDADES: Especialidad[] = [
     fotoAlt: "Equipo de D&P con chalecos y casco revisando una tableta",
     icono: "casco",
     pagina: {
+      seoTitulo: "SG-SST, riesgo psicosocial y bienestar laboral",
+      seoDescripcion:
+        "Diseño e implementación del SG-SST, evaluación de riesgo psicosocial, salud mental, prevención osteomuscular y programas de bienestar laboral.",
       titular: "Prevenimos riesgos. Fortalecemos entornos de trabajo saludables.",
       intro:
         "Acompañamos a las organizaciones en la gestión de la seguridad y salud en el trabajo, la prevención de riesgos laborales y el cuidado de la salud física y mental de sus colaboradores.",
@@ -152,6 +161,9 @@ export const ESPECIALIDADES: Especialidad[] = [
     fotoAlt: "Profesional de D&P en una entrevista de trabajo",
     icono: "personas",
     pagina: {
+      seoTitulo: "Selección por competencias y desarrollo organizacional",
+      seoDescripcion:
+        "Selección por competencias, pruebas psicotécnicas, formación de líderes, clima laboral y procesos de gestión humana para fortalecer tus equipos.",
       titular: "Impulsamos el talento que mueve a las organizaciones.",
       intro:
         "Acompañamos la selección, la evaluación y el desarrollo de las personas, fortaleciendo competencias, liderazgo, relaciones laborales y desempeño de los equipos.",

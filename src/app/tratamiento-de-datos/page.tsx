@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { metadatosPagina } from "@/lib/seo";
 import { LegalPageLayout } from "@/components/site/LegalPageLayout";
 import { contacto } from "@/lib/site-config";
 
-export const metadata: Metadata = {
-  title: "Tratamiento de datos personales",
-  description:
+export const metadata: Metadata = metadatosPagina({
+  titulo: "Tratamiento de datos personales",
+  descripcion:
     "Política de Tratamiento de Datos Personales de D&P Ingeniería Integral, conforme a la Ley 1581 de 2012 y el Decreto 1377 de 2013 de Colombia.",
-  alternates: { canonical: "/tratamiento-de-datos" },
-};
+  ruta: "/tratamiento-de-datos",
+});
 
 export default function TratamientoDeDatosPage() {
   return (
