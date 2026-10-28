@@ -35,9 +35,14 @@ export function MobileNav() {
         aria-expanded={open}
         className="flex h-11 w-11 flex-col items-center justify-center gap-[5px] rounded-lg bg-white/80"
       >
-        <span className="block h-[2px] w-[22px] bg-tinta" />
-        <span className="block h-[2px] w-[22px] bg-tinta" />
-        <span className="block h-[2px] w-[22px] bg-tinta" />
+        {/* Las tres rayas se convierten en una X cuando el menú está abierto. */}
+        <span
+          className={`block h-[2px] w-[22px] bg-tinta transition-transform ${open ? "translate-y-[7px] rotate-45" : ""}`}
+        />
+        <span className={`block h-[2px] w-[22px] bg-tinta transition-opacity ${open ? "opacity-0" : ""}`} />
+        <span
+          className={`block h-[2px] w-[22px] bg-tinta transition-transform ${open ? "-translate-y-[7px] -rotate-45" : ""}`}
+        />
       </button>
 
       {open && (

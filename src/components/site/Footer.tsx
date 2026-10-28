@@ -62,21 +62,31 @@ export function Footer() {
               Cuidamos personas, protegemos organizaciones.
             </p>
             <div className="mt-6 flex gap-2.5">
-              {SOCIALES.map((s) => (
-                <a
-                  key={s.platform}
-                  href={s.href}
-                  target={s.active ? "_blank" : undefined}
-                  rel={s.active ? "noopener" : undefined}
-                  title={s.title}
-                  aria-label={s.title}
-                  className={`flex h-11 w-11 items-center justify-center rounded-full border border-borde bg-white shadow-sm transition-transform ${
-                    s.active ? "hover:-translate-y-0.5" : "opacity-45"
-                  }`}
-                >
-                  <SocialIcon platform={s.platform} className="block h-6 w-6" />
-                </a>
-              ))}
+              {SOCIALES.map((s) =>
+                s.active ? (
+                  <a
+                    key={s.platform}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener"
+                    title={s.title}
+                    aria-label={s.title}
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-borde bg-white shadow-sm transition-transform hover:-translate-y-0.5"
+                  >
+                    <SocialIcon platform={s.platform} className="block h-6 w-6" />
+                  </a>
+                ) : (
+                  // Cuenta aún sin enlace: se muestra el ícono, pero no es un enlace que no lleve a ningún lado.
+                  <span
+                    key={s.platform}
+                    title={s.title}
+                    aria-hidden="true"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-borde bg-white opacity-45"
+                  >
+                    <SocialIcon platform={s.platform} className="block h-6 w-6" />
+                  </span>
+                ),
+              )}
             </div>
           </div>
 
