@@ -61,6 +61,7 @@ src/
   lib/
     site-config.ts             Datos de contacto y flags de contenido del sitio
     servicios.ts               Las cuatro especialidades: textos de la Guía 2026, fotos y slugs
+    seo.ts                     Metadatos por página (Open Graph), ficha de empresa y servicios (JSON-LD)
     client-logos.ts            Lista de logos de clientes (public/logosclientes)
     portal-auth.ts             Verificación de credenciales y de la cookie de sesión
     portal-logout.ts           Server Action de cierre de sesión (borra la cookie)
