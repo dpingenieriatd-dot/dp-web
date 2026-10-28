@@ -5,8 +5,7 @@ import { Encabezado } from "./Encabezado";
 import { IconFlecha } from "./Iconos";
 import { enlaceFlecha } from "./ui";
 
-// Guía 2026, cap. 3.7. Solo logos ya publicados en el sitio anterior: los nuevos se agregan
-// cuando D&P confirme la autorización de cada cliente.
+// Guía 2026, cap. 3.7. La lista de logos vive en src/lib/client-logos.ts.
 export function Clientes({ conEnlace = true }: { conEnlace?: boolean }) {
   return (
     <section id="experiencia" className="scroll-mt-[96px] border-t border-borde bg-white px-[28px] py-20 w900:py-24">
@@ -27,9 +26,13 @@ export function Clientes({ conEnlace = true }: { conEnlace?: boolean }) {
             ) : undefined
           }
         />
-        <ul className="m-0 mt-12 grid list-none grid-cols-2 gap-px overflow-hidden rounded-2xl border border-borde-2 bg-borde-2 p-0 w640:grid-cols-4 w900:grid-cols-7">
+        {/* Tarjetas que se reparten en filas y centran la última, sin casillas vacías. */}
+        <ul className="m-0 mt-12 flex list-none flex-wrap justify-center gap-3 p-0 w900:gap-4">
           {CLIENT_LOGOS.map((logo) => (
-            <li key={logo.src} className="flex aspect-video items-center justify-center bg-white p-4">
+            <li
+              key={logo.src}
+              className="flex aspect-video w-[calc((100%-12px)/2)] items-center justify-center rounded-xl border border-borde-2 bg-white p-4 w640:w-[calc((100%-36px)/4)] w900:w-[calc((100%-96px)/7)]"
+            >
               <Image
                 src={logo.src}
                 alt={logo.nombre}
