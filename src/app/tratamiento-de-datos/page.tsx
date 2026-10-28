@@ -3,7 +3,7 @@ import { LegalPageLayout } from "@/components/site/LegalPageLayout";
 import { contacto } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Tratamiento de datos personales — D&P Ingeniería Integral",
+  title: "Tratamiento de datos personales",
   description:
     "Política de Tratamiento de Datos Personales de D&P Ingeniería Integral, conforme a la Ley 1581 de 2012 y el Decreto 1377 de 2013 de Colombia.",
   alternates: { canonical: "/tratamiento-de-datos" },

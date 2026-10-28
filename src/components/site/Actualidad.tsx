@@ -1,14 +1,20 @@
-import { ImagePlaceholder } from "@/components/shared/ImagePlaceholder";
+import Image from "next/image";
+import Link from "next/link";
 import { contacto } from "@/lib/site-config";
+import { Encabezado } from "./Encabezado";
+import { IconFlecha } from "./Iconos";
+import { enlaceFlecha } from "./ui";
 
 type Post = {
   categoria: string;
   titulo: string;
   texto: string;
-  imagen?: string;
-  href?: string;
+  imagen: string;
+  href: string;
 };
 
+// Publicaciones que ya estaban en el sitio (Guía 2026, cap. 6.3). Falta la fecha de cada una:
+// se agrega cuando D&P la confirme.
 const POSTS: Post[] = [
   {
     categoria: "Equipo",
@@ -33,74 +39,74 @@ const POSTS: Post[] = [
   },
 ];
 
-export function Actualidad() {
+export function ListaPublicaciones({ maximo }: { maximo?: number }) {
   return (
-    <section id="actualidad" className="scroll-mt-[102px] border-t border-borde bg-fondo px-[28px] py-[100px]">
-      <div className="mx-auto max-w-[1240px]">
-        <div className="mb-11 flex flex-wrap items-end justify-between gap-10">
-          <div>
-            <div className="font-mono text-[12px] tracking-[.14em] text-teal uppercase">
-              Actualidad
-            </div>
-            <h2 className="mt-4 font-display text-[34px] leading-[1.1] font-extrabold tracking-[-.02em] w900:text-[48px] w900:leading-[1.06]">
-              Lo que pasa en obra y en capacitación.
-            </h2>
-          </div>
+    <ul className="m-0 grid list-none grid-cols-1 gap-6 p-0 w640:grid-cols-2 w900:grid-cols-3">
+      {POSTS.slice(0, maximo).map((post) => (
+        <li key={post.href}>
           <a
-            href={contacto.instagram}
+            href={post.href}
             target="_blank"
             rel="noopener"
-            className="border-b border-verde-claro pb-1 font-mono text-[12.5px] tracking-[.08em] uppercase"
+            className="group flex h-full flex-col overflow-hidden rounded-2xl border border-borde bg-white shadow-[0_6px_24px_rgba(0,83,35,.06)] transition-colors hover:border-verde-claro"
           >
-            {contacto.instagramHandle} →
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <Image
+                src={post.imagen}
+                alt={post.titulo}
+                fill
+                sizes="(min-width: 900px) 380px, (min-width: 640px) 50vw, 100vw"
+                className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+              />
+            </div>
+            <div className="flex flex-1 flex-col px-6 pt-6 pb-7">
+              <span className="font-mono text-[11.5px] tracking-[.1em] text-verde-brillante uppercase">
+                {post.categoria}
+              </span>
+              <h3 className="mt-2.5 mb-2 font-display text-[19px] leading-[1.25] font-bold text-verde-profundo">
+                {post.titulo}
+              </h3>
+              <p className="m-0 flex-1 text-[15px] leading-[1.6] text-texto-medio">{post.texto}</p>
+              <span className="mt-5 text-[14.5px] font-semibold text-verde-marca">
+                Ver en Instagram ↗
+              </span>
+            </div>
           </a>
-        </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
-        <div className="grid grid-cols-1 gap-5 w640:grid-cols-2 w900:grid-cols-3">
-          {POSTS.map((post, i) => {
-            const card = (
-              <>
-                <ImagePlaceholder
-                  label="portada del post"
-                  src={post.imagen}
-                  alt={post.titulo}
-                  height={190}
-                  className="border-0"
-                />
-                <div className="px-[22px] pt-[22px] pb-[26px]">
-                  <div className="font-mono text-[11px] tracking-[.1em] text-verde-claro uppercase">
-                    {post.categoria}
-                  </div>
-                  <h3 className="mt-2.5 mb-2 font-display text-[19px] leading-[1.25] font-bold">
-                    {post.titulo}
-                  </h3>
-                  <p className="m-0 text-[14.5px] leading-[1.55] text-texto-suave">{post.texto}</p>
-                </div>
-              </>
-            );
-
-            if (post.href) {
-              return (
-                <a
-                  key={i}
-                  href={post.href}
-                  target="_blank"
-                  rel="noopener"
-                  className="block border border-borde bg-white transition-colors hover:border-verde-claro"
-                >
-                  {card}
-                </a>
-              );
-            }
-
-            return (
-              <article key={i} className="border border-borde bg-white">
-                {card}
-              </article>
-            );
-          })}
+// Guía 2026, cap. 3.8: en el inicio, máximo tres contenidos; el histórico va en /actualidad.
+export function Actualidad() {
+  return (
+    <section id="actualidad" className="scroll-mt-[96px] border-t border-borde bg-white px-[28px] py-20 w900:py-24">
+      <div className="mx-auto max-w-[1240px]">
+        <Encabezado
+          eyebrow="Actualidad"
+          titulo="Ideas y experiencias que transforman entornos de trabajo."
+          texto="Conoce nuestras actividades, recomendaciones y contenidos sobre seguridad, bienestar, talento humano e ingeniería."
+          accion={
+            <Link href="/actualidad" className={enlaceFlecha}>
+              Ver actualidad
+              <IconFlecha className="h-[18px] w-[18px]" />
+            </Link>
+          }
+        />
+        <div className="mt-12">
+          <ListaPublicaciones maximo={3} />
         </div>
       </div>
     </section>
+  );
+}
+
+export function EnlaceInstagram() {
+  return (
+    <a href={contacto.instagram} target="_blank" rel="noopener" className={enlaceFlecha}>
+      Síguenos en Instagram {contacto.instagramHandle}
+      <IconFlecha className="h-[18px] w-[18px]" />
+    </a>
   );
 }

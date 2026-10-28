@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Encabezado } from "./Encabezado";
 
 type Testimonio = {
   quote: string;
@@ -51,25 +52,17 @@ function Estrellas({ cantidad }: { cantidad: number }) {
 
 export function Testimonios() {
   return (
-    <section
-      id="testimonios"
-      className="scroll-mt-[102px] border-t border-borde bg-fondo px-[28px] py-[100px]"
-    >
+    <section id="testimonios" className="scroll-mt-[96px] border-t border-borde bg-fondo px-[28px] py-20 w900:py-24">
       <div className="mx-auto max-w-[1240px]">
         <div className="mb-11">
-          <div className="font-mono text-[12px] tracking-[.14em] text-teal uppercase">
-            Testimonios
-          </div>
-          <h2 className="mt-4 font-display text-[34px] leading-[1.1] font-extrabold tracking-[-.02em] w900:text-[48px] w900:leading-[1.06]">
-            Lo que dicen nuestros clientes.
-          </h2>
+          <Encabezado eyebrow="Testimonios" titulo="Lo que dicen nuestros clientes." />
         </div>
 
         <div className="grid grid-cols-1 gap-5 w900:grid-cols-2">
           {TESTIMONIOS.map((t) => (
             <figure
               key={t.nombre}
-              className="flex flex-col border border-borde bg-white px-[30px] pt-[30px] pb-[26px]"
+              className="flex flex-col rounded-2xl border border-borde bg-white px-[30px] pt-[30px] pb-[26px] shadow-[0_6px_24px_rgba(0,83,35,.06)]"
             >
               <Estrellas cantidad={t.estrellas} />
 

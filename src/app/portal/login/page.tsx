@@ -7,7 +7,7 @@ import { SESSION_COOKIE_NAME, isValidSessionValue } from "@/lib/portal-auth";
 import { LoginForm } from "./LoginForm";
 
 export const metadata: Metadata = {
-  title: "Ingresar — Portal de clientes D&P",
+  title: { absolute: "Ingresar — Portal de clientes D&P" },
   robots: { index: false, follow: false },
 };
 

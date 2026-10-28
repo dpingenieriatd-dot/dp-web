@@ -43,9 +43,13 @@ export async function enviarSolicitud(
   const correo = String(formData.get("correo") ?? "").trim();
   const servicio = String(formData.get("servicio") ?? "").trim();
   const mensaje = String(formData.get("mensaje") ?? "").trim();
+  // Solo llegan cuando el servicio es la Tienda D&P.
+  const producto = String(formData.get("producto") ?? "").trim().slice(0, 300);
+  const cantidad = String(formData.get("cantidad") ?? "").trim().slice(0, 20);
+  const personalizacion = String(formData.get("personalizacion") ?? "").trim().slice(0, 60);
 
   if (!nombre || !correo || !mensaje) {
-    return { error: "Complete al menos nombre, correo y mensaje." };
+    return { error: "Completa al menos nombre, correo y mensaje." };
   }
   if (!EMAIL_RE.test(correo)) {
     return { error: "El correo electrónico no parece válido." };
@@ -58,7 +62,7 @@ export async function enviarSolicitud(
   if (!key) {
     return {
       error:
-        "El formulario aún no está configurado. Escríbanos directamente a proyectos@dpingenieriaintegral.com.",
+        "El formulario aún no está configurado. Escríbenos directamente a proyectos@dpingenieriaintegral.com.",
     };
   }
 
@@ -68,6 +72,9 @@ export async function enviarSolicitud(
     ["Teléfono", telefono],
     ["Correo", correo],
     ["Servicio de interés", servicio],
+    ["Producto o categoría", producto],
+    ["Cantidad aproximada", cantidad],
+    ["Personalización", personalizacion],
   ].filter(([, v]) => v) as [string, string][];
 
   const text =
@@ -105,13 +112,13 @@ export async function enviarSolicitud(
     if (!resp.ok) {
       return {
         error:
-          "No se pudo enviar en este momento. Intente de nuevo o escríbanos a proyectos@dpingenieriaintegral.com.",
+          "No se pudo enviar en este momento. Intenta de nuevo o escríbenos a proyectos@dpingenieriaintegral.com.",
       };
     }
   } catch {
     return {
       error:
-        "No se pudo enviar en este momento. Intente de nuevo o escríbanos a proyectos@dpingenieriaintegral.com.",
+        "No se pudo enviar en este momento. Intenta de nuevo o escríbenos a proyectos@dpingenieriaintegral.com.",
     };
   }
 

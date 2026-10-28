@@ -24,9 +24,12 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   alternates: { canonical: "/" },
-  title: "D&P Ingeniería Integral",
+  title: {
+    default: "D&P Ingeniería Integral — Soluciones integrales para organizaciones",
+    template: "%s | D&P Ingeniería Integral",
+  },
   description:
-    "Sistemas de seguridad en el trabajo e Ingeniería Integral. Estudios de suelo, diseño geotécnico, sistemas de gestión y suministro de EPP.",
+    "Ingeniería civil y geotecnia, seguridad y salud en el trabajo, gestión humana y suministros empresariales. Soluciones integrales para organizaciones más seguras, saludables y eficientes.",
   icons: {
     icon: [
       { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },

@@ -1,72 +1,69 @@
-import { ImagePlaceholder } from "@/components/shared/ImagePlaceholder";
+import Image from "next/image";
+import Link from "next/link";
+import { IconEngrane, IconEscudo, IconFlecha, IconHoja, IconPersonas } from "./Iconos";
+import { btnSecundario, eyebrow } from "./ui";
 
-const VALORES = [
-  { titulo: "Trabajo", texto: "Equipo técnico en campo y laboratorio" },
-  { titulo: "Rectitud", texto: "Cumplimiento normativo y entregables auditables" },
-  { titulo: "Integralidad", texto: "Un solo aliado para obra, SG-SST y dotación" },
+// Guía 2026, cap. 3.5 (atributos de marca). También se usan en la página Nosotros.
+const ATRIBUTOS = [
+  { Icono: IconEscudo, texto: "Enfoque integral" },
+  { Icono: IconPersonas, texto: "Equipo interdisciplinario" },
+  { Icono: IconEngrane, texto: "Soluciones a la medida" },
+  { Icono: IconHoja, texto: "Compromiso con la mejora continua" },
 ];
 
+export function Atributos() {
+  return (
+    <ul className="mx-auto m-0 grid max-w-[1240px] list-none grid-cols-1 gap-5 px-[28px] py-9 w640:grid-cols-2 w1100:grid-cols-4 w1100:gap-0">
+      {ATRIBUTOS.map(({ Icono, texto }, i) => (
+        <li
+          key={texto}
+          className={`flex items-center gap-4 w1100:justify-center w1100:px-4 ${
+            i > 0 ? "w1100:border-l w1100:border-borde" : ""
+          }`}
+        >
+          <Icono className="h-10 w-10 flex-none text-verde-brillante" />
+          <span className="text-[16px] text-texto-medio">{texto}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// Guía 2026, cap. 3.4.
 export function Nosotros() {
   return (
-    <section id="nosotros" className="scroll-mt-[102px] bg-fondo px-[28px] py-[110px]">
-      <div className="mx-auto grid max-w-[1240px] grid-cols-1 items-center gap-[72px] w900:grid-cols-2">
-        <div>
-          <div className="font-mono text-[12px] tracking-[.14em] text-teal uppercase">
-            Nosotros
-          </div>
-          <h2 className="mt-4 font-display text-[34px] leading-[1.1] font-extrabold tracking-[-.02em] w900:text-[48px] w900:leading-[1.06]">
-            Ingeniería y bienestar laboral, con un mismo estándar.
-          </h2>
-          <p className="mt-[26px] text-pretty text-[19px] leading-[1.7] text-texto-medio">
-            <strong className="text-tinta">
-              Ofrecemos servicios de ingeniería civil y seguridad y salud en el trabajo a
-              sectores económicos,
-            </strong>{" "}
-            que se orienten al crecimiento urbanístico o vial y que a su vez deseen garantizar
-            las condiciones de seguridad y salud física o mental de sus trabajadores, apoyados en
-            un equipo humano altamente calificado y comprometidos con la satisfacción de nuestros
-            clientes.
-          </p>
-
-          <div className="mt-[38px] grid grid-cols-1 gap-px border border-borde bg-borde w640:grid-cols-3">
-            {VALORES.map((v) => (
-              <div key={v.titulo} className="bg-white px-5 py-[22px]">
-                <div className="font-display text-[15px] font-bold text-verde-marca">
-                  {v.titulo}
-                </div>
-                <p className="mt-1.5 text-[13.5px] leading-[1.5] text-texto-suave">{v.texto}</p>
-              </div>
-            ))}
-          </div>
-
-          <a
-            href="#servicios"
-            className="mt-[34px] inline-block rounded-[2px] bg-verde-marca px-6 py-[15px] font-mono text-[13px] tracking-[.08em] text-white uppercase transition-colors hover:bg-verde-marca-hover"
-          >
-            Ver servicios
-          </a>
-        </div>
-
-        <div className="grid h-[560px] grid-rows-[1.3fr_1fr] gap-4">
-          <ImagePlaceholder
-            label="imagen «nosotros» — equipo D&P"
-            src="/fotos-sitio-actual/foto-equipo-nosotros.png"
-            alt="Equipo de D&P Ingeniería Integral"
+    <section id="nosotros" className="scroll-mt-[96px] bg-white">
+      <div className="grid grid-cols-1 w900:grid-cols-2">
+        <div className="relative aspect-[16/10] w900:aspect-auto w900:min-h-[460px]">
+          <Image
+            src="/fotos-2026/nosotros.webp"
+            alt="Equipo de D&P en camisa blanca trabajando alrededor de un computador"
+            fill
+            sizes="(min-width: 900px) 50vw, 100vw"
+            className="object-cover"
           />
-          <div className="grid grid-cols-2 gap-4">
-            <ImagePlaceholder
-              label="ensayo de laboratorio"
-              src="/fotos-sitio-actual/ensayo_laboratorio.jpg"
-              alt="Ensayo de laboratorio de suelos"
-            />
-            <ImagePlaceholder
-              label="capacitación SG-SST"
-              src="/fotos-sitio-actual/capacitacion-sgsst.jpg"
-              alt="Capacitación SG-SST"
-            />
+        </div>
+        <div className="flex items-center bg-[#eef6e9] px-[28px] py-14 w900:px-16 w900:py-16">
+          <div className="max-w-[540px]">
+            <p className={eyebrow}>Nosotros</p>
+            <h2 className="mt-4 font-display text-[32px] leading-[1.1] font-extrabold tracking-[-.02em] text-verde-profundo w900:text-[42px]">
+              Ingeniería aplicada al cuidado de las personas.
+            </h2>
+            <p className="mt-5 text-[17px] leading-[1.7] text-texto-medio">
+              Somos una empresa colombiana que integra soluciones de ingeniería civil, seguridad y
+              salud en el trabajo, gestión humana y suministros empresariales. Unimos conocimiento
+              técnico y enfoque humano para contribuir a organizaciones más seguras, productivas y
+              sostenibles.
+            </p>
+            <Link href="/nosotros" className={`${btnSecundario} mt-7`}>
+              Conoce más sobre nosotros
+              <IconFlecha className="h-[18px] w-[18px]" />
+            </Link>
           </div>
         </div>
       </div>
+
+      <Atributos />
     </section>
   );
 }

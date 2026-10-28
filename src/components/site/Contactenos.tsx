@@ -1,17 +1,33 @@
 "use client";
 
-import { useActionState, useEffect, useRef, startTransition } from "react";
+import { useActionState, useEffect, useRef, useState, startTransition } from "react";
 import { contacto } from "@/lib/site-config";
+import { ESPECIALIDADES, especialidadPorSlug } from "@/lib/servicios";
 import { enviarSolicitud } from "./contacto-action";
 
 const INPUT_CLASS =
-  "rounded-[2px] border border-input-borde bg-white px-[14px] py-[13px] text-[15px] outline-none focus:border-verde-claro";
+  "rounded-lg border border-input-borde bg-white px-[14px] py-[13px] text-[15px] outline-none focus:border-verde-marca focus:ring-2 focus:ring-verde-claro/30";
 const LABEL_CLASS = "font-mono text-[11px] tracking-[.1em] text-texto-suave uppercase";
 
-export function Contactenos() {
+type ContactenosProps = {
+  /** Slug de la especialidad que llega preseleccionada (p. ej. desde una página de servicio). */
+  servicioInicial?: string;
+  /** En /contacto el título es el h1 de la página. */
+  comoPagina?: boolean;
+};
+
+export function Contactenos({ servicioInicial, comoPagina = false }: ContactenosProps) {
+  const Titulo = comoPagina ? "h1" : "h2";
+  const seleccion =
+    ESPECIALIDADES.find((e) => e.slug === servicioInicial)?.opcionFormulario ??
+    ESPECIALIDADES[0].opcionFormulario;
+
   const [estado, formAction, pending] = useActionState(enviarSolicitud, undefined);
   const sent = estado?.ok === true;
   const formRef = useRef<HTMLFormElement>(null);
+  const [servicio, setServicio] = useState(seleccion);
+  // Tienda D&P, fase 1 (Guía 2026, cap. 5): producto, cantidad y personalización.
+  const esTienda = servicio === especialidadPorSlug("tienda")?.opcionFormulario;
 
   // Se envía por onSubmit (no por el prop `action`) para que React NO limpie el
   // formulario automáticamente: en caso de error se conservan los datos que
@@ -27,20 +43,29 @@ export function Contactenos() {
   }, [estado]);
 
   return (
-    <section id="contactenos" className="scroll-mt-[102px] bg-verde-profundo px-[28px] py-[104px] text-fondo">
+    <section id="contactenos" className="scroll-mt-[96px] bg-verde-profundo px-[28px] py-20 text-fondo w900:py-[104px]">
       <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-20 w900:grid-cols-[1fr_1.05fr]">
         <div>
-          <div className="font-mono text-[12px] tracking-[.14em] text-verde-suave uppercase">
-            Contáctenos
-          </div>
-          <h2 className="mt-4 font-display text-[34px] leading-[1.1] font-extrabold tracking-[-.02em] w900:text-[48px] w900:leading-[1.06]">
-            Conversemos sobre su proyecto.
-          </h2>
-          <p className="mt-5 mb-10 max-w-[46ch] text-[17px] leading-[1.65] text-fondo/70">
-            Cuéntenos qué necesita y le respondemos con alcance, tiempos y cotización.
+          <p className="m-0 font-mono text-[12.5px] font-medium tracking-[.12em] text-verde-suave uppercase">
+            Contáctanos
           </p>
+          <Titulo className="mt-4 font-display text-[34px] leading-[1.1] font-extrabold tracking-[-.02em] w900:text-[46px] w900:leading-[1.06]">
+            Conversemos sobre tu proyecto.
+          </Titulo>
+          <p className="mt-5 mb-8 max-w-[46ch] text-[17px] leading-[1.65] text-fondo/80">
+            Cuéntanos qué necesita tu organización. Te orientaremos sobre el servicio más adecuado y
+            los siguientes pasos para recibir una propuesta.
+          </p>
+          <a
+            href={contacto.whatsappHref}
+            target="_blank"
+            rel="noopener"
+            className="mb-10 inline-flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-3.5 text-[16px] font-semibold text-verde-profundo transition-colors hover:bg-fondo-verde"
+          >
+            Escribir por WhatsApp
+          </a>
 
-          <div className="grid gap-px border border-fondo/16 bg-fondo/16">
+          <div className="grid gap-px overflow-hidden rounded-2xl border border-fondo/16 bg-fondo/16">
             <div className="bg-verde-profundo px-[22px] py-5">
               <div className="mb-1.5 font-mono text-[11px] tracking-[.12em] text-verde-suave uppercase">
                 Teléfono / WhatsApp
@@ -79,7 +104,7 @@ export function Contactenos() {
         <form
           ref={formRef}
           onSubmit={onSubmit}
-          className="grid content-start gap-[18px] bg-fondo p-10 text-tinta"
+          className="grid content-start gap-[18px] rounded-2xl bg-fondo p-6 text-tinta shadow-xl w640:p-10"
         >
           {/* Honeypot anti-spam: oculto para personas, tentador para bots. */}
           <input
@@ -124,13 +149,43 @@ export function Contactenos() {
 
           <label className="grid gap-[7px]">
             <span className={LABEL_CLASS}>Servicio de interés</span>
-            <select name="servicio" className={INPUT_CLASS} defaultValue="Ingeniería y Geotecnia">
-              <option>Ingeniería y Geotecnia</option>
-              <option>Sistemas de gestión (SG-SST)</option>
-              <option>Suministros y dotación EPP</option>
-              <option>Otro / varios</option>
+            <select
+              name="servicio"
+              className={INPUT_CLASS}
+              value={servicio}
+              onChange={(e) => setServicio(e.target.value)}
+            >
+              {ESPECIALIDADES.map((e) => (
+                <option key={e.slug}>{e.opcionFormulario}</option>
+              ))}
             </select>
           </label>
+
+          {esTienda && (
+            <div className="grid grid-cols-1 gap-[18px] rounded-xl border border-verde-claro/40 bg-fondo-verde p-4 w640:grid-cols-2">
+              <label className="grid gap-[7px] w640:col-span-2">
+                <span className={LABEL_CLASS}>Producto o categoría de interés</span>
+                <input
+                  type="text"
+                  name="producto"
+                  placeholder="Ej.: termos con logo, dotación, guantes"
+                  className={INPUT_CLASS}
+                />
+              </label>
+              <label className="grid gap-[7px]">
+                <span className={LABEL_CLASS}>Cantidad aproximada</span>
+                <input type="number" name="cantidad" min={1} placeholder="100" className={INPUT_CLASS} />
+              </label>
+              <label className="grid gap-[7px]">
+                <span className={LABEL_CLASS}>¿Con personalización?</span>
+                <select name="personalizacion" className={INPUT_CLASS} defaultValue="Por definir">
+                  <option>Sí, con logo o marca</option>
+                  <option>No</option>
+                  <option>Por definir</option>
+                </select>
+              </label>
+            </div>
+          )}
 
           <label className="grid gap-[7px]">
             <span className={LABEL_CLASS}>Mensaje</span>
@@ -138,7 +193,7 @@ export function Contactenos() {
               name="mensaje"
               rows={5}
               required
-              placeholder="Descríbanos su necesidad"
+              placeholder="Cuéntanos tu necesidad o tu reto"
               className={`${INPUT_CLASS} resize-y`}
             />
           </label>
@@ -147,20 +202,20 @@ export function Contactenos() {
             <p className="m-0 text-[13px] leading-[1.5] text-[#b3261e]">{estado.error}</p>
           )}
           {sent && (
-            <p className="m-0 rounded-[2px] bg-verde-marca/10 px-3 py-2.5 text-[13px] leading-[1.5] text-verde-marca">
-              ✓ Recibimos su mensaje. Le responderemos al correo indicado.
+            <p className="m-0 rounded-lg bg-verde-marca/10 px-3 py-2.5 text-[13px] leading-[1.5] text-verde-marca">
+              ✓ Recibimos tu mensaje. Te responderemos al correo que nos indicaste.
             </p>
           )}
 
           <button
             type="submit"
             disabled={pending}
-            className="rounded-[2px] bg-verde-marca px-[22px] py-4 font-mono text-[13px] font-medium tracking-[.08em] text-white uppercase transition-colors hover:bg-verde-marca-hover disabled:opacity-60"
+            className="rounded-lg bg-verde-marca px-[22px] py-4 text-[16px] font-semibold text-white transition-colors hover:bg-verde-marca-hover disabled:opacity-60"
           >
-            {pending ? "Enviando…" : "Enviar"}
+            {pending ? "Enviando…" : "Enviar solicitud"}
           </button>
           <p className="m-0 text-[12.5px] leading-[1.5] text-texto-tenue">
-            Al enviar acepta el tratamiento de sus datos conforme a nuestra{" "}
+            Al enviar aceptas el tratamiento de tus datos conforme a nuestra{" "}
             <a href="/politica-de-privacidad" className="underline underline-offset-2">
               política de privacidad
             </a>{" "}

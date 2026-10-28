@@ -37,7 +37,11 @@ siguiente libre e imprime la URL real en consola).
 src/
   app/
     layout.tsx                 Layout raíz, fuentes (Archivo / IBM Plex), metadata y favicon
-    page.tsx                   Home de una sola página (secciones en src/components/site)
+    page.tsx                   Inicio (secciones en src/components/site)
+    nosotros/ experiencia/ actualidad/ tienda/ contacto/   Páginas del sitio
+    servicios/                 Índice de las cuatro especialidades
+      [slug]/                  Página de cada servicio (datos en src/lib/servicios.ts)
+    sitemap.ts robots.ts       SEO
     globals.css                Tailwind v4 + tokens de tema (@theme) y breakpoints w*
     politica-de-privacidad/    Página legal
     tratamiento-de-datos/      Página legal (Habeas Data, Ley 1581 de 2012)
@@ -49,11 +53,14 @@ src/
         tienda/ cotizaciones/ agenda/ facturas/
         mensajes/
   components/
-    site/                      Secciones del sitio corporativo (Hero, Nosotros, Servicios…)
+    site/                      Secciones del sitio corporativo (Hero, Especialidades, Nosotros…)
+                               Piezas comunes: SiteShell (menú + pie), PageHero, Encabezado,
+                               CierreComercial, nav.ts (menú) y ui.ts (clases de botones/títulos)
     portal/                    UI del portal (Sidebar, Topbar, StatCard, StatusPill…)
     shared/                    Componentes compartidos
   lib/
     site-config.ts             Datos de contacto y flags de contenido del sitio
+    servicios.ts               Las cuatro especialidades: textos de la Guía 2026, fotos y slugs
     client-logos.ts            Lista de logos de clientes (public/logosclientes)
     portal-auth.ts             Verificación de credenciales y de la cookie de sesión
     portal-logout.ts           Server Action de cierre de sesión (borra la cookie)
@@ -70,15 +77,43 @@ Alias de importación: `@/*` → `src/*`.
 
 ## Sitio corporativo
 
-Home de una sola página con navegación por anclas. Secciones: Hero, Nosotros,
-Servicios (Ingeniería y Geotecnia, Sistemas de gestión, Suministros), Actualidad,
-Clientes, Testimonios y Contáctenos, más botón flotante de WhatsApp.
+Rediseño según la **Guía de Redacción Web 2026** de D&P y su boceto de referencia
+(guardados fuera del repo, en `C:\Users\cesar\DP\web-2026\`). Todos los textos
+visibles salen de la guía; no se inventan cifras, certificaciones ni clientes.
+
+Páginas (menú del cap. 2: Inicio · Nosotros · Servicios ▼ · Experiencia · Actualidad ·
+Tienda D&P · Contacto):
+
+| Ruta | Contenido |
+|---|---|
+| `/` | Portada, franja de beneficios, 4 especialidades, Nosotros, propósito, clientes, testimonios, actualidad (máx. 3), cierre comercial y contacto |
+| `/servicios` | Las cuatro especialidades |
+| `/servicios/[slug]` | Ingeniería Civil y Geotecnia · Seguridad, Salud y Bienestar Laboral · Gestión Humana y Desarrollo Organizacional |
+| `/tienda` | Tienda D&P, fase 1: categorías y "Solicitar cotización" (nunca "Comprar" hasta la fase 2) |
+| `/nosotros` | Quiénes somos, valores (Trabajo, Rectitud, Integralidad), cómo trabajamos, propósito |
+| `/experiencia` | Clientes y testimonios publicados |
+| `/actualidad` | Publicaciones (enlazan a Instagram) |
+| `/contacto` | Formulario; `?servicio=<slug>` deja el selector ya elegido |
+
+Todas las páginas usan `SiteShell` (mismo menú, pie y botón de WhatsApp). Para cambiar
+el texto de un servicio se edita solo `src/lib/servicios.ts`: de ahí leen el inicio,
+el menú, el pie, el selector del formulario y la página del servicio.
+
+Pendientes de D&P: autorización de los logos nuevos (guardados en
+`DP\web-2026\material-sitio\logos-pendientes-autorizacion`), PDF del portafolio para
+"Descargar portafolio", productos y fotos para la Tienda y fechas de las publicaciones.
 
 Las secciones **Actualidad**, **Clientes** y **Testimonios** se activan/desactivan
 con flags en `src/lib/site-config.ts` (`showActualidad`, `showClientes`,
 `showTestimonios`). Ahí también viven los datos de contacto (teléfono, correo,
 WhatsApp, horarios, redes). Algunos datos están marcados como pendientes de
 confirmar por el cliente (p. ej. `ciudadConfirmar`).
+
+Servicios retirados del sitio hasta que Dirección Técnica de D&P los confirme
+(Guía de Redacción Web 2026, caps. 4.1 y 4.2): auditorías ISO 9001, ISO 14001,
+ISO 31000 y "OHSAS 18000", habilitación en salud, trazado y diagnóstico de líneas
+Oil & Gas (locaciones y facilidades de acceso) e instrumentación. Si se confirman,
+van en un acordeón "Otros servicios especializados".
 
 ### Formulario "Contáctenos"
 
