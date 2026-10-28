@@ -50,7 +50,8 @@ export function datosEstructuradosEmpresa() {
     "@type": "Organization",
     "@id": `${siteUrl}/#empresa`,
     name: NOMBRE_SITIO,
-    legalName: "D&P Ingeniería Integral S.A.S.",
+    legalName: contacto.razonSocial,
+    taxID: contacto.nit,
     slogan: "Cuidamos personas, protegemos organizaciones.",
     description:
       "Empresa colombiana que integra soluciones de ingeniería civil y geotecnia, seguridad y salud en el trabajo, gestión humana y suministros empresariales.",

@@ -174,7 +174,9 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col gap-4 border-t border-verde-claro/30 pt-6 text-[13.5px] text-texto-suave w640:flex-row w640:items-center w640:justify-between">
-          <span>D&amp;P Ingeniería Integral S.A.S. © 2026. Todos los derechos reservados.</span>
+          <span>
+            {contacto.razonSocial} · NIT {contacto.nit} © 2026. Todos los derechos reservados.
+          </span>
           <span className="flex flex-wrap gap-x-6 gap-y-2">
             <Link href="/politica-de-privacidad" className="hover:text-verde-marca">
               Política de privacidad

@@ -16,7 +16,9 @@ export const contacto = {
     sabado: "Sábados 8:00 a.m. – 12:00 m.",
     corto: "Lun–Vie 8:00–17:00 · Sáb 8:00–12:00",
   },
-  // Confirmada por D&P el 28/10/2026.
+  // Razón social, NIT y dirección confirmados por D&P el 28/10/2026.
+  razonSocial: "D&P Ingeniería Integral S.A.S.",
+  nit: "901.246.822-2",
   direccion: "Cra. 16 # 96-64, Edificio Oficenter 96, Oficina 406",
   ciudad: "Bogotá",
   ciudadConfirmar: false,

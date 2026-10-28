@@ -26,8 +26,10 @@ export default function TratamientoDeDatosPage() {
       <h2>1. Responsable del tratamiento</h2>
       <ul>
         <li>
-          <strong>Razón social:</strong> D&amp;P Ingeniería Integral{" "}
-          <em className="not-italic text-texto-tenue">(confirmar razón social y NIT exactos)</em>
+          <strong>Razón social:</strong> {contacto.razonSocial}
+        </li>
+        <li>
+          <strong>NIT:</strong> {contacto.nit}
         </li>
         <li>
           <strong>Domicilio:</strong> {contacto.direccion}, {contacto.ciudad}

@@ -33,7 +33,8 @@ export default function PoliticaDePrivacidadPage() {
       <h2>1. Responsable</h2>
       <p>
         El responsable del tratamiento de la información recolectada a través de este sitio es{" "}
-        <strong>D&amp;P Ingeniería Integral</strong>, con domicilio en {contacto.ciudad}
+        <strong>{contacto.razonSocial}</strong>, NIT {contacto.nit}, con domicilio en{" "}
+        {contacto.direccion}, {contacto.ciudad}
         {contacto.ciudadConfirmar && " (confirmar)"}, Colombia. Puede contactarnos en{" "}
         <a href={`mailto:${contacto.correo}`}>{contacto.correo}</a> o al {contacto.telefono}.
       </p>
