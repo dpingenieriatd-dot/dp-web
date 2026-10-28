@@ -98,6 +98,16 @@ export function Contactenos({ servicioInicial, comoPagina = false }: Contactenos
                 {contacto.horarios.sabado}
               </div>
             </div>
+            <div className="bg-verde-profundo px-[22px] py-5">
+              <div className="mb-1.5 font-mono text-[11px] tracking-[.12em] text-verde-suave uppercase">
+                Dirección
+              </div>
+              <div className="text-[16px] leading-[1.6] text-fondo">
+                {contacto.direccion}
+                <br />
+                {contacto.ciudad}, Colombia
+              </div>
+            </div>
           </div>
         </div>
 

@@ -16,8 +16,10 @@ export const contacto = {
     sabado: "Sábados 8:00 a.m. – 12:00 m.",
     corto: "Lun–Vie 8:00–17:00 · Sáb 8:00–12:00",
   },
-  ciudad: "Colombia",
-  ciudadConfirmar: true,
+  // Confirmada por D&P el 28/10/2026.
+  direccion: "Cra. 16 # 96-64, Edificio Oficenter 96, Oficina 406",
+  ciudad: "Bogotá",
+  ciudadConfirmar: false,
   instagram: "https://www.instagram.com/dypingenieriaintegral",
   instagramHandle: "@dypingenieriaintegral",
   facebook: "https://www.facebook.com/dpingenieriaintegral",

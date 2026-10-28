@@ -131,7 +131,11 @@ export function Footer() {
               </li>
               <li>{contacto.horarios.semana}</li>
               <li>{contacto.horarios.sabado}</li>
-              <li>{contacto.ciudad}</li>
+              <li>
+                {contacto.direccion}
+                <br />
+                {contacto.ciudad}, Colombia
+              </li>
             </ul>
             <a
               href={contacto.whatsappHref}

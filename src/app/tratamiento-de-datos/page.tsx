@@ -30,7 +30,7 @@ export default function TratamientoDeDatosPage() {
           <em className="not-italic text-texto-tenue">(confirmar razón social y NIT exactos)</em>
         </li>
         <li>
-          <strong>Domicilio:</strong> {contacto.ciudad}
+          <strong>Domicilio:</strong> {contacto.direccion}, {contacto.ciudad}
           {contacto.ciudadConfirmar && " (confirmar)"}, Colombia
         </li>
         <li>

@@ -59,8 +59,13 @@ export function datosEstructuradosEmpresa() {
     image: `${siteUrl}${IMAGEN_COMPARTIR.url}`,
     email: contacto.correo,
     telephone: contacto.telefono.replace(/\s/g, ""),
-    // Solo el país mientras D&P confirma la ciudad y la dirección (ver site-config.ts).
-    address: { "@type": "PostalAddress", addressCountry: "CO" },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: contacto.direccion,
+      addressLocality: contacto.ciudad,
+      addressRegion: "Bogotá D.C.",
+      addressCountry: "CO",
+    },
     areaServed: { "@type": "Country", name: "Colombia" },
     sameAs: [contacto.instagram, contacto.facebook],
     contactPoint: {
