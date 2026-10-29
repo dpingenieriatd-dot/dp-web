@@ -21,7 +21,7 @@
   --color-texto: #243329;
   --color-texto-medio: #33453a;
   --color-texto-suave: #5c6b60;
-  --color-texto-tenue: #6e7c71;
+  --color-texto-tenue: #5f6d62;
   --color-gris-etiqueta: #9aa79e;
 
   /* Fondos */
@@ -135,7 +135,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-dp-pulso {
+  .animate-dp-pulso,
+  .animate-dp-rise {
     animation: none;
   }
 }

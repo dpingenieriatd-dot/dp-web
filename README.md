@@ -30,6 +30,8 @@ siguiente libre e imprime la URL real en consola).
 | `npm run build` | Build de producción                          |
 | `npm run start` | Sirve el build de producción                 |
 | `npm run lint`  | ESLint (`eslint-config-next`)                |
+| `npm run typecheck` | Revisión de tipos (`tsc --noEmit`)       |
+| `npm run test:e2e`  | Pruebas Playwright + axe sobre el build (correr `npm run build` antes) |
 
 ## Estructura
 
@@ -100,9 +102,21 @@ Todas las páginas usan `SiteShell` (mismo menú, pie y botón de WhatsApp). Par
 el texto de un servicio se edita solo `src/lib/servicios.ts`: de ahí leen el inicio,
 el menú, el pie, el selector del formulario y la página del servicio.
 
-Pendientes de D&P: autorización de los logos nuevos (guardados en
-`DP\web-2026\material-sitio\logos-pendientes-autorizacion`), PDF del portafolio para
-"Descargar portafolio", productos y fotos para la Tienda y fechas de las publicaciones.
+Pendientes de D&P: PDF del portafolio para "Descargar portafolio", productos y fotos
+para la Tienda y fechas de las publicaciones.
+
+### Calidad y medición
+
+- **Pruebas** (`e2e/`): formulario de contacto (servicio preseleccionado, campos de la
+  Tienda, campos obligatorios y envío completo usando el campo trampa, sin mandar correo),
+  página 404, redirecciones antiguas, encabezados de seguridad y accesibilidad con axe
+  (WCAG 2.2 AA) en todas las páginas, en escritorio y celular de 390 px.
+- **Medición**: Vercel Web Analytics (`<Analytics />` en `layout.tsx`, sin cookies) y el
+  evento `solicitud_enviada` cuando un formulario se envía bien. Hay que tener activado
+  Web Analytics en el proyecto de Vercel; los eventos personalizados requieren plan Pro.
+- **Seguridad**: encabezados en `next.config.ts` (HSTS, `nosniff`, `Referrer-Policy`,
+  `Permissions-Policy` y CSP con `frame-ancestors`).
+- **Errores**: `src/app/not-found.tsx` (404 con la marca) y `src/app/error.tsx`.
 
 Las secciones **Actualidad**, **Clientes** y **Testimonios** se activan/desactivan
 con flags en `src/lib/site-config.ts` (`showActualidad`, `showClientes`,

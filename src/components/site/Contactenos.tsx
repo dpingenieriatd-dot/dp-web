@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { useActionState, useEffect, useRef, useState, startTransition } from "react";
 import { contacto } from "@/lib/site-config";
 import { ESPECIALIDADES, especialidadPorSlug } from "@/lib/servicios";
@@ -39,7 +40,12 @@ export function Contactenos({ servicioInicial, comoPagina = false }: Contactenos
   }
 
   useEffect(() => {
-    if (estado?.ok) formRef.current?.reset();
+    if (!estado?.ok) return;
+    formRef.current?.reset();
+    // Conversión principal del sitio: una solicitud enviada.
+    track("solicitud_enviada", { servicio });
+    // Solo debe correr cuando cambia el resultado del envío, no al cambiar el servicio.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [estado]);
 
   return (
@@ -209,10 +215,10 @@ export function Contactenos({ servicioInicial, comoPagina = false }: Contactenos
           </label>
 
           {estado?.error && (
-            <p className="m-0 text-[13px] leading-[1.5] text-[#b3261e]">{estado.error}</p>
+            <p role="alert" className="m-0 text-[13px] leading-[1.5] text-[#b3261e]">{estado.error}</p>
           )}
           {sent && (
-            <p className="m-0 rounded-lg bg-verde-marca/10 px-3 py-2.5 text-[13px] leading-[1.5] text-verde-marca">
+            <p role="status" className="m-0 rounded-lg bg-verde-marca/10 px-3 py-2.5 text-[13px] leading-[1.5] text-verde-marca">
               ✓ Recibimos tu mensaje. Te responderemos al correo que nos indicaste.
             </p>
           )}

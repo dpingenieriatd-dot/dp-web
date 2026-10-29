@@ -58,7 +58,7 @@ export function Footer() {
             <p className="mt-2 mb-0 max-w-[34ch] text-[15px] leading-[1.6]">
               Ingeniería aplicada al cuidado de las personas.
             </p>
-            <p className="mt-1 mb-0 max-w-[34ch] text-[15px] leading-[1.6] font-semibold text-verde-brillante">
+            <p className="mt-1 mb-0 max-w-[34ch] text-[15px] leading-[1.6] font-semibold text-verde-marca">
               Cuidamos personas, protegemos organizaciones.
             </p>
             <div className="mt-6 flex gap-2.5">

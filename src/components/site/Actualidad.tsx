@@ -60,7 +60,7 @@ export function ListaPublicaciones({ maximo }: { maximo?: number }) {
               />
             </div>
             <div className="flex flex-1 flex-col px-6 pt-6 pb-7">
-              <span className="font-mono text-[11.5px] tracking-[.1em] text-verde-brillante uppercase">
+              <span className="font-mono text-[11.5px] tracking-[.1em] text-verde-marca uppercase">
                 {post.categoria}
               </span>
               <h3 className="mt-2.5 mb-2 font-display text-[19px] leading-[1.25] font-bold text-verde-profundo">

@@ -44,3 +44,7 @@ next-env.d.ts
 *.docx
 ~$*
 .playwright-mcp/
+
+# playwright
+/test-results/
+/playwright-report/

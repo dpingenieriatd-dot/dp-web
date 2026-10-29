@@ -93,7 +93,7 @@ export default function NosotrosPage() {
           <ol className="m-0 mt-12 grid list-none grid-cols-1 gap-6 p-0 w900:grid-cols-3">
             {PASOS.map((paso, i) => (
               <li key={paso} className="relative rounded-2xl border border-borde bg-white p-8">
-                <span className="font-display text-[44px] leading-none font-extrabold text-verde-claro">
+                <span aria-hidden="true" className="font-display text-[44px] leading-none font-extrabold text-verde-brillante">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <p className="mt-4 mb-0 text-[18px] leading-[1.5] font-semibold text-verde-profundo">{paso}</p>

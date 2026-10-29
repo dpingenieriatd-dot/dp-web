@@ -8,7 +8,23 @@ const DIRECCIONES_ANTIGUAS: [string, string][] = [
   ["/suministros-y-dotacion-epp", "/tienda"],
 ];
 
+// Encabezados de seguridad para todas las respuestas. No se usa una CSP completa con scripts
+// porque obligaría a generar cada página en el servidor (nonce) y el sitio es estático.
+const ENCABEZADOS_SEGURIDAD = [
+  { key: "Strict-Transport-Security", value: "max-age=63072000" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
+  {
+    key: "Content-Security-Policy",
+    value: "frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'",
+  },
+];
+
 const nextConfig: NextConfig = {
+  async headers() {
+    return [{ source: "/:path*", headers: ENCABEZADOS_SEGURIDAD }];
+  },
   async redirects() {
     return DIRECCIONES_ANTIGUAS.map(([source, destination]) => ({
       source,

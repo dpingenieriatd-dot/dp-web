@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Archivo, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { siteUrl } from "@/lib/site-config";
 import { IMAGEN_COMPARTIR, NOMBRE_SITIO } from "@/lib/seo";
@@ -67,7 +68,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth"
       className={`${archivo.variable} ${plexSans.variable} ${plexMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* Visitas y envíos del formulario (Vercel Web Analytics, sin cookies). */}
+        <Analytics />
+      </body>
     </html>
   );
 }
