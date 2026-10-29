@@ -11,17 +11,19 @@ type Post = {
   texto: string;
   imagen: string;
   href: string;
+  /** Fecha de publicación en Instagram (AAAA-MM-DD), confirmada por D&P. */
+  fecha: string;
 };
 
-// Publicaciones que ya estaban en el sitio (Guía 2026, cap. 6.3). Falta la fecha de cada una:
-// se agrega cuando D&P la confirme.
-const POSTS: Post[] = [
+// Publicaciones que ya estaban en el sitio (Guía 2026, cap. 6.3), con las fechas que confirmó D&P.
+const PUBLICACIONES: Post[] = [
   {
     categoria: "Equipo",
     titulo: "Un equipo comprometido con la seguridad",
     texto: "D&P Ingeniería Integral S.A.S. — un equipo comprometido con la seguridad y salud de los trabajadores.",
     imagen: "/actualidad/equipo-seguridad.jpg",
     href: "https://www.instagram.com/p/DGKIp9-MA1u/",
+    fecha: "2025-02-16",
   },
   {
     categoria: "Bienestar",
@@ -29,6 +31,7 @@ const POSTS: Post[] = [
     texto: "Las actividades vivenciales conectan cuerpo, mente y emoción. No solo se piensa el cambio, se vive.",
     imagen: "/actualidad/actividad-vivencial.jpg",
     href: "https://www.instagram.com/p/DIuKP_jPD9E/",
+    fecha: "2025-04-21",
   },
   {
     categoria: "SG-SST",
@@ -36,8 +39,19 @@ const POSTS: Post[] = [
     texto: "Te regalamos algunos tips que puedes implementar para disminuir el estrés laboral.",
     imagen: "/actualidad/tips-estres-laboral.jpg",
     href: "https://www.instagram.com/p/CmJzyveuOOA/",
+    fecha: "2022-12-14",
   },
 ];
+
+// La más reciente primero (las fechas ISO se ordenan bien como texto).
+const POSTS = [...PUBLICACIONES].sort((a, b) => b.fecha.localeCompare(a.fecha));
+
+const FORMATO_FECHA = new Intl.DateTimeFormat("es-CO", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+  timeZone: "UTC",
+});
 
 export function ListaPublicaciones({ maximo }: { maximo?: number }) {
   return (
@@ -60,9 +74,14 @@ export function ListaPublicaciones({ maximo }: { maximo?: number }) {
               />
             </div>
             <div className="flex flex-1 flex-col px-6 pt-6 pb-7">
-              <span className="font-mono text-[11.5px] tracking-[.1em] text-verde-marca uppercase">
-                {post.categoria}
-              </span>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                <span className="font-mono text-[11.5px] tracking-[.1em] text-verde-marca uppercase">
+                  {post.categoria}
+                </span>
+                <time dateTime={post.fecha} className="text-[13px] text-texto-suave">
+                  {FORMATO_FECHA.format(new Date(post.fecha))}
+                </time>
+              </div>
               <h3 className="mt-2.5 mb-2 font-display text-[19px] leading-[1.25] font-bold text-verde-profundo">
                 {post.titulo}
               </h3>
